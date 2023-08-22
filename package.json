@@ -1,0 +1,39 @@
+{
+  "name": "lestudio-app",
+  "version": "1.0.0",
+  "author": "qlaffont",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "dev:tauri": "vite --config vite.config.tauri.ts",
+    "build:tauri": "vite build --config vite.config.tauri.ts",
+    "preview": "vite preview",
+    "eslint": "eslint src",
+    "eslint:fix": "eslint src --fix"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "18.17.6",
+    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "@typescript-eslint/parser": "5.62.0",
+    "autoprefixer": "10.4.15",
+    "cssnano": "6.0.1",
+    "cssnano-preset-advanced": "6.0.1",
+    "eslint": "8.47.0",
+    "eslint-config-prettier": "8.10.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "postcss": "8.4.28",
+    "prettier": "2.8.8",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.1.6",
+    "vite": "4.4.9",
+    "vite-plugin-solid": "2.7.0",
+    "vite-plugin-tauri": "3.3.0"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "1.4.0",
+    "@tauri-apps/cli": "1.4.0",
+    "solid-js": "1.7.11"
+  }
+}
