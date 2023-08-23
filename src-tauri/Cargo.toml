@@ -4,8 +4,7 @@ version = "1.0.0"
 description = "LeStudio official app"
 authors = ["qlaffont"]
 license = "MIT"
-repository = ""
-default-run = "app"
+# default-run = "app"
 edition = "2021"
 build = "src/build.rs"
 
@@ -18,10 +17,11 @@ tauri-build = { version = "1.4", features = [] }
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 tauri = { version = "1.4", features = ["api-all"] }
+procfs = "0.15.1"
 
 [features]
-default = [ "custom-protocol" ]
-custom-protocol = [ "tauri/custom-protocol" ]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
 
 [profile.release]
 strip = true            # Automatically strip symbols from the binary
