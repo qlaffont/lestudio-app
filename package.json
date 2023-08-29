@@ -32,6 +32,7 @@
     "vite-plugin-tauri": "3.3.0"
   },
   "dependencies": {
+    "@solidjs/router": "^0.8.3",
     "@tauri-apps/api": "1.4.0",
     "@tauri-apps/cli": "1.4.0",
     "solid-js": "1.7.11"
