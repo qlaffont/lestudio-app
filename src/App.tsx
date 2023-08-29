@@ -8,7 +8,6 @@ const App: Component = () => {
     <>
       <Router source={hashIntegration()}>
         <AppLayout>
-          <p>test</p>
           <AppRoutes />
         </AppLayout>
       </Router>

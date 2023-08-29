@@ -20,6 +20,6 @@ import { render } from 'solid-js/web'
 // console.log(await invoke('get_music_content'))
 
 import App from './App'
-import './index.css'
+import './scss/index.scss'
 
 render(() => <App />, document.getElementById('root'))
