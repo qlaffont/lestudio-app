@@ -5,7 +5,8 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:prettier/recommended',
-    'prettier'
+    'prettier',
+    'plugin:solid/typescript'
   ],
   parserOptions: {
     ecmaVersion: 2021,
@@ -18,7 +19,7 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'prettier', 'solid'],
   rules: {
     "prettier/prettier": "error",
     "@typescript-eslint/indent": ["error", 2],

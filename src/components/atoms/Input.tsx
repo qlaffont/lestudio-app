@@ -1,5 +1,5 @@
 import cx from 'classix'
-import { Ref } from 'solid-js'
+import { Ref, mergeProps, splitProps } from 'solid-js'
 
 const variantclasss = {
   normal: 'border border-dark-10 focus-within:border-dark-30 rounded-md'
@@ -48,109 +48,124 @@ export interface InputProps {
   required?: boolean
 }
 
-export const Input = ({
-  label,
-  name = 'input',
-  placeholder,
-  prefixIcon,
-  suffixIcon,
-  prefixIconclass = '',
-  suffixIconclass = '',
-  labelclass = '',
-  disabled,
-  className,
-  inputclass,
-  type = 'text',
-  variant = 'normal',
-  size = 'medium',
-  error,
-  inputRef,
-  onClick,
-  helperText,
-  required,
-  ...props
-}: InputProps) => {
-  const isError = !!error
+export const Input = (_props: InputProps) => {
+  const [props, otherProps] = splitProps(
+    mergeProps(
+      {
+        name: 'input',
+        prefixIconclass: '',
+        suffixIconclass: '',
+        labelclass: '',
+        type: 'text',
+        variant: 'normal',
+        size: 'medium'
+      },
+      _props
+    ),
+    [
+      'label',
+      'name',
+      'placeholder',
+      'prefixIcon',
+      'suffixIcon',
+      'prefixIconclass',
+      'suffixIconclass',
+      'labelclass',
+      'disabled',
+      'className',
+      'inputclass',
+      'type',
+      'variant',
+      'size',
+      'error',
+      'inputRef',
+      'onClick',
+      'helperText',
+      'required'
+    ]
+  )
+  const isError = !!props.error
 
   return (
-    <div class={cx('relative block max-w-xl', className)}>
-      {label && (
+    <div class={cx('relative block max-w-xl', props.className)}>
+      {props.label && (
         <label
-          for={name}
+          for={props.name}
           class={cx(
             'block pb-1 text-white',
-            variantLabelclasss[variant],
+            variantLabelclasss[props.variant],
             isError ? ' !text-error' : '',
-            labelclass
+            props.labelclass
           )}
         >
-          {label}
-          {required && <span> *</span>}
+          {props.label}
+          {props.required && <span> *</span>}
         </label>
       )}
 
       <div
         class={cx(
           'flex w-full items-center gap-2',
-          variantclasss[variant],
-          sizeclasss[size],
-          disabled ? 'opacity-30' : '',
+          variantclasss[props.variant],
+          sizeclasss[props.size],
+          props.disabled ? 'opacity-30' : '',
           isError ? '!border-error ' : ''
         )}
       >
-        {prefixIcon && (
+        {props.prefixIcon && (
           <div>
             <i
               class={cx(
                 'icon bg-dark-100 block h-5 w-5',
-                `icon-${prefixIcon}`,
-                prefixIconclass,
-                disabled ? 'cursor-not-allowed' : 'cursor-pointer'
+                `icon-${props.prefixIcon}`,
+                props.prefixIconclass,
+                props.disabled ? 'cursor-not-allowed' : 'cursor-pointer'
               )}
-              onClick={onClick}
+              onClick={props.onClick}
             />
           </div>
         )}
         <div class="flex-grow">
           <input
-            id={name}
-            name={name}
-            type={type}
+            id={props.name}
+            name={props.name}
+            type={props.type}
             class={cx(
-              variantInputclasss[variant],
-              sizeInputclasss[size],
+              variantInputclasss[props.variant],
+              sizeInputclasss[props.size],
               'placeholder-white placeholder-opacity-60 px-2',
-              disabled ? 'cursor-not-allowed' : '',
-              inputclass
+              props.disabled ? 'cursor-not-allowed' : '',
+              props.inputclass
             )}
-            disabled={disabled}
-            placeholder={placeholder || ''}
-            ref={inputRef}
-            {...props}
+            disabled={props.disabled}
+            placeholder={props.placeholder || ''}
+            ref={props.inputRef}
+            {...otherProps}
           />
         </div>
-        {suffixIcon && (
+        {props.suffixIcon && (
           <div>
             <i
               class={cx(
                 'icon block h-5 w-5 bg-white',
-                `icon-${suffixIcon}`,
-                suffixIconclass,
-                disabled ? 'cursor-not-allowed' : 'cursor-pointer'
+                `icon-${props.suffixIcon}`,
+                props.suffixIconclass,
+                props.disabled ? 'cursor-not-allowed' : 'cursor-pointer'
               )}
-              onClick={onClick}
+              onClick={props.onClick}
             />
           </div>
         )}
       </div>
-      {(!!error || helperText) && (
+      {(!!props.error || props.helperText) && (
         <p
           class={cx(
             'mt-1 text-sm',
             isError ? '!border-error !text-error' : 'text-white text-opacity-80'
           )}
-          innerHTML={error || helperText}
-        ></p>
+          // eslint-disable-next-line solid/no-innerhtml
+          innerHTML={props.error || props.helperText}
+        />
       )}
     </div>
   )

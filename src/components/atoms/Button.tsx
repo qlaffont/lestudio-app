@@ -1,22 +1,9 @@
 import cx from 'classix'
-import { JSX } from 'solid-js'
+import { JSX, mergeProps, splitProps } from 'solid-js'
 
-export const Button = ({
-  className = '',
-  prefixIconClassName = '',
-  suffixIconClassName = '',
-  type = 'button',
-  disabled = false,
-  isLoading = false,
-  children,
-  prefixIcon,
-  onClickPrefix,
-  suffixIcon,
-  onClickSuffix,
-  ...props
-}: {
+export const Button = (_props: {
   type?: 'button' | 'submit'
-  className?: string
+  class?: string
   disabled?: boolean
   isLoading?: boolean
   children?: JSX.Element
@@ -27,36 +14,64 @@ export const Button = ({
   onClick?: JSX.EventHandler<unknown, MouseEvent>
   onClickPrefix?: JSX.EventHandler<unknown, MouseEvent>
   onClickSuffix?: JSX.EventHandler<unknown, MouseEvent>
-}) => (
-  <button
-    class={cx(
-      'flex items-center justify-center gap-2',
-      'rounded-md',
-      'hover:opacity-60',
-      disabled ? '!opacity-30' : '',
-      className
-    )}
-    disabled={disabled || isLoading}
-    type={type}
-    {...props}
-  >
-    {isLoading && (
-      <div>
-        <i class={cx('icon icon-refresh animate block')}></i>
-      </div>
-    )}
-    {prefixIcon && (
-      <div onClick={onClickPrefix}>
-        <i class={cx('block', `${prefixIcon}`, prefixIconClassName)}></i>
-      </div>
-    )}
+}) => {
+  const [props, otherProps] = splitProps(
+    mergeProps(
+      {
+        class: '',
+        prefixIconClassName: '',
+        suffixIconClassName: '',
+        type: 'button',
+        disabled: false,
+        isLoading: false
+      },
+      _props
+    ),
+    [
+      'class',
+      'prefixIconClassName',
+      'suffixIconClassName',
+      'type',
+      'disabled',
+      'isLoading',
+      'children',
+      'prefixIcon',
+      'onClickPrefix',
+      'suffixIcon',
+      'onClickSuffix'
+    ]
+  )
+  return (
+    <button
+      class={cx(
+        'flex items-center justify-center gap-2',
+        'rounded-md',
+        'hover:opacity-60',
+        props.disabled ? '!opacity-30' : '',
+        props.class
+      )}
+      disabled={props.disabled || props.isLoading}
+      type={props.type}
+      {...otherProps}
+    >
+      {props.isLoading && (
+        <div>
+          <i class={cx('icon icon-refresh animate block')} />
+        </div>
+      )}
+      {props.prefixIcon && (
+        <div onClick={props.onClickPrefix}>
+          <i class={cx('block', `${props.prefixIcon}`, props.prefixIconClassName)} />
+        </div>
+      )}
 
-    {children && <div>{children}</div>}
+      {props.children && <div>{props.children}</div>}
 
-    {suffixIcon && (
-      <div onClick={onClickSuffix}>
-        <i class={cx('block', `${suffixIcon}`, suffixIconClassName)}></i>
-      </div>
-    )}
-  </button>
-)
+      {props.suffixIcon && (
+        <div onClick={props.onClickSuffix}>
+          <i class={cx('block', `${props.suffixIcon}`, props.suffixIconClassName)} />
+        </div>
+      )}
+    </button>
+  )
+}

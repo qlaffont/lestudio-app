@@ -20,16 +20,16 @@ import { render } from 'solid-js/web'
 // console.log(await invoke('get_music_content'))
 
 import App from './App'
-import './scss/index.scss'
+// import './scss/index.scss'
 
-import 'solid-js'
-declare module 'solid-js' {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace JSX {
-    interface Directives {
-      form: true
-    }
-  }
-}
+// import 'solid-js'
+// declare module 'solid-js' {
+//   // eslint-disable-next-line @typescript-eslint/no-namespace
+//   namespace JSX {
+//     interface Directives {
+//       form: true
+//     }
+//   }
+// }
 
 render(() => <App />, document.getElementById('root'))
