@@ -2,7 +2,7 @@ import { A } from '@solidjs/router'
 import { children, JSX } from 'solid-js'
 
 export const AppLayout = (props: { children: JSX.Element }) => {
-  // const c = children(() => props?.children)
+  const c = children(() => props?.children)
 
   return (
     <div class="flex h-screen w-screen">
@@ -44,7 +44,7 @@ export const AppLayout = (props: { children: JSX.Element }) => {
         </div>
       </div>
 
-      <div class="h-screen flex-grow bg-zinc-600 overflow-auto p-4">{props.children}</div>
+      <div class="h-screen flex-grow bg-zinc-600 overflow-auto p-4">{c()}</div>
     </div>
   )
 }
