@@ -29,3 +29,16 @@ export const onProcessList = async (callback: (processes: string[]) => void) => 
     callback((event.payload as { message: string }).message.split('|'))
   })
 }
+
+export const updateGamesList = async () => {
+  await invoke('update_games_list')
+}
+
+export const getGamesList = async () => {
+  return JSON.parse(await invoke('get_games_list')) as {
+    processName: string
+    windowTitle: string
+    igdbId: string
+    twitchCategoryId: string
+  }[]
+}
