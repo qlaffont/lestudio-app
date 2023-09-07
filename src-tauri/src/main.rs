@@ -19,7 +19,7 @@ fn main() {
 
     Ok(())
   })
-    .invoke_handler(tauri::generate_handler![commands::get_system, commands::get_music_content])
+    .invoke_handler(tauri::generate_handler![commands::get_system, commands::get_music_content, commands::get_config, commands::set_config])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }

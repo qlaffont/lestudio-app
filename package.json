@@ -37,10 +37,12 @@
   "dependencies": {
     "@felte/reporter-solid": "^1.2.9",
     "@felte/solid": "^1.2.11",
+    "@felte/validator-zod": "^1.0.17",
     "@solidjs/router": "^0.8.3",
     "@tauri-apps/api": "1.4.0",
     "@tauri-apps/cli": "1.4.0",
     "classix": "^2.1.34",
-    "solid-js": "1.7.11"
+    "solid-js": "1.7.11",
+    "zod": "^3.22.2"
   }
 }
