@@ -20,10 +20,11 @@ export const Settings = () => {
     },
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-misused-promises
-  onMount(async () => {
-    const config = await getConfig();
-    setData(config);
+  onMount(() => {
+    (async () => {
+      const config = await getConfig();
+      setData(config);
+    })();
   });
 
   return (
