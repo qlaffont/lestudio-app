@@ -1,51 +1,50 @@
-import cx from 'classix'
-import { Ref, mergeProps, splitProps } from 'solid-js'
+import cx from 'classix';
+import { Ref, mergeProps, splitProps } from 'solid-js';
 
 const variantclasss = {
-  normal: 'border border-dark-10 focus-within:border-dark-30 rounded-md'
-}
+  normal: 'border border-dark-10 focus-within:border-dark-30 rounded-md',
+};
 
 const sizeclasss = {
   medium: '',
-  small: '!py-0'
-}
+  small: '!py-0',
+};
 
 const variantInputclasss: Record<keyof typeof variantclasss, string> = {
-  normal:
-    'peer h-10 w-full text-black focus:outline-none bg-white !border-0 !ring-transparent'
-}
+  normal: 'peer h-10 w-full text-black focus:outline-none bg-white !border-0 !ring-transparent',
+};
 
 const sizeInputclasss: Record<keyof typeof sizeclasss, string> = {
   medium: '',
-  small: '!h-8'
-}
+  small: '!h-8',
+};
 
 const variantLabelclasss: Record<keyof typeof variantclasss, string> = {
-  normal: ''
-}
+  normal: '',
+};
 
-export type InputSize = keyof typeof sizeclasss
+export type InputSize = keyof typeof sizeclasss;
 
 export interface InputProps {
-  label?: string
-  placeholder?: string
-  name?: string
-  variant?: keyof typeof variantclasss
-  size?: InputSize
-  className?: string
-  type?: string
-  error?
-  prefixIcon?: string
-  suffixIcon?: string
-  prefixIconclass?: string
-  suffixIconclass?: string
-  labelclass?: string
-  inputclass?: string
-  helperText?: string
-  disabled?: boolean
-  onClick?: () => void
-  inputRef?: Ref<HTMLInputElement>
-  required?: boolean
+  label?: string;
+  placeholder?: string;
+  name?: string;
+  variant?: keyof typeof variantclasss;
+  size?: InputSize;
+  className?: string;
+  type?: string;
+  error?;
+  prefixIcon?: string;
+  suffixIcon?: string;
+  prefixIconclass?: string;
+  suffixIconclass?: string;
+  labelclass?: string;
+  inputclass?: string;
+  helperText?: string;
+  disabled?: boolean;
+  onClick?: () => void;
+  inputRef?: Ref<HTMLInputElement>;
+  required?: boolean;
 }
 
 export const Input = (_props: InputProps) => {
@@ -58,9 +57,9 @@ export const Input = (_props: InputProps) => {
         labelclass: '',
         type: 'text',
         variant: 'normal',
-        size: 'medium'
+        size: 'medium',
       },
-      _props
+      _props,
     ),
     [
       'label',
@@ -81,10 +80,10 @@ export const Input = (_props: InputProps) => {
       'inputRef',
       'onClick',
       'helperText',
-      'required'
-    ]
-  )
-  const isError = !!props.error
+      'required',
+    ],
+  );
+  const isError = !!props.error;
 
   return (
     <div class={cx('relative block max-w-xl', props.className)}>
@@ -95,7 +94,7 @@ export const Input = (_props: InputProps) => {
             'block pb-1 text-white',
             variantLabelclasss[props.variant],
             isError ? ' !text-error' : '',
-            props.labelclass
+            props.labelclass,
           )}
         >
           {props.label}
@@ -109,7 +108,7 @@ export const Input = (_props: InputProps) => {
           variantclasss[props.variant],
           sizeclasss[props.size],
           props.disabled ? 'opacity-30' : '',
-          isError ? '!border-error ' : ''
+          isError ? '!border-error ' : '',
         )}
       >
         {props.prefixIcon && (
@@ -119,7 +118,7 @@ export const Input = (_props: InputProps) => {
                 'icon bg-dark-100 block h-5 w-5',
                 `icon-${props.prefixIcon}`,
                 props.prefixIconclass,
-                props.disabled ? 'cursor-not-allowed' : 'cursor-pointer'
+                props.disabled ? 'cursor-not-allowed' : 'cursor-pointer',
               )}
               onClick={props.onClick}
             />
@@ -135,7 +134,7 @@ export const Input = (_props: InputProps) => {
               sizeInputclasss[props.size],
               'placeholder-white placeholder-opacity-60 px-2',
               props.disabled ? 'cursor-not-allowed' : '',
-              props.inputclass
+              props.inputclass,
             )}
             disabled={props.disabled}
             placeholder={props.placeholder || ''}
@@ -150,7 +149,7 @@ export const Input = (_props: InputProps) => {
                 'icon block h-5 w-5 bg-white',
                 `icon-${props.suffixIcon}`,
                 props.suffixIconclass,
-                props.disabled ? 'cursor-not-allowed' : 'cursor-pointer'
+                props.disabled ? 'cursor-not-allowed' : 'cursor-pointer',
               )}
               onClick={props.onClick}
             />
@@ -159,14 +158,11 @@ export const Input = (_props: InputProps) => {
       </div>
       {(!!props.error || props.helperText) && (
         <p
-          class={cx(
-            'mt-1 text-sm',
-            isError ? '!border-error !text-error' : 'text-white text-opacity-80'
-          )}
+          class={cx('mt-1 text-sm', isError ? '!border-error !text-error' : 'text-white text-opacity-80')}
           // eslint-disable-next-line solid/no-innerhtml
           innerHTML={props.error || props.helperText}
         />
       )}
     </div>
-  )
-}
+  );
+};

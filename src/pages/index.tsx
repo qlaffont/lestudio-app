@@ -1,6 +1,6 @@
-import { Route, Routes } from '@solidjs/router'
-import { Home } from './home'
-import { Settings } from './settings'
+import { Route, Routes } from '@solidjs/router';
+import { Home } from './home';
+import { Settings } from './settings';
 
 export const AppRoutes = () => {
   return (
@@ -8,5 +8,5 @@ export const AppRoutes = () => {
       <Route path="/" component={Home} />
       <Route path="/settings" component={Settings} />
     </Routes>
-  )
-}
+  );
+};

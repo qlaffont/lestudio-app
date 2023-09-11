@@ -1,19 +1,19 @@
-import cx from 'classix'
-import { JSX, mergeProps, splitProps } from 'solid-js'
+import cx from 'classix';
+import { JSX, mergeProps, splitProps } from 'solid-js';
 
 export const Button = (_props: {
-  type?: 'button' | 'submit'
-  class?: string
-  disabled?: boolean
-  isLoading?: boolean
-  children?: JSX.Element
-  prefixIcon?: string
-  prefixIconClassName?: string
-  suffixIcon?: string
-  suffixIconClassName?: string
-  onClick?: JSX.EventHandler<unknown, MouseEvent>
-  onClickPrefix?: JSX.EventHandler<unknown, MouseEvent>
-  onClickSuffix?: JSX.EventHandler<unknown, MouseEvent>
+  type?: 'button' | 'submit';
+  class?: string;
+  disabled?: boolean;
+  isLoading?: boolean;
+  children?: JSX.Element;
+  prefixIcon?: string;
+  prefixIconClassName?: string;
+  suffixIcon?: string;
+  suffixIconClassName?: string;
+  onClick?: JSX.EventHandler<unknown, MouseEvent>;
+  onClickPrefix?: JSX.EventHandler<unknown, MouseEvent>;
+  onClickSuffix?: JSX.EventHandler<unknown, MouseEvent>;
 }) => {
   const [props, otherProps] = splitProps(
     mergeProps(
@@ -23,9 +23,9 @@ export const Button = (_props: {
         suffixIconClassName: '',
         type: 'button',
         disabled: false,
-        isLoading: false
+        isLoading: false,
       },
-      _props
+      _props,
     ),
     [
       'class',
@@ -38,9 +38,9 @@ export const Button = (_props: {
       'prefixIcon',
       'onClickPrefix',
       'suffixIcon',
-      'onClickSuffix'
-    ]
-  )
+      'onClickSuffix',
+    ],
+  );
   return (
     <button
       class={cx(
@@ -48,7 +48,7 @@ export const Button = (_props: {
         'rounded-md',
         'hover:opacity-60',
         props.disabled ? '!opacity-30' : '',
-        props.class
+        props.class,
       )}
       disabled={props.disabled || props.isLoading}
       type={props.type}
@@ -73,5 +73,5 @@ export const Button = (_props: {
         </div>
       )}
     </button>
-  )
-}
+  );
+};
