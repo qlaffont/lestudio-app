@@ -1,19 +1,21 @@
 import { createForm } from '@felte/solid';
-import { ValidationMessage, reporter } from '@felte/reporter-solid';
 import { Input } from '../../components/atoms/Input';
 import { Button } from '../../components/atoms/Button';
 import { validator } from '@felte/validator-zod';
-import * as zod from 'zod';
 import { onMount } from 'solid-js';
 import { Config, getConfig, setConfig } from '../../tauri';
+import { useI18n } from '../../lang/useI18n';
+import { getError } from '../../services/form';
+import zod from '../../lang/zod';
 
 const schema = zod.object({
-  token: zod.string().nonempty(),
+  token: zod.string().min(1),
 });
 
 export const Settings = () => {
-  const { form, setData } = createForm({
-    extend: [validator({ schema }), reporter()],
+  const { t } = useI18n();
+  const { form, setData, errors } = createForm({
+    extend: [validator({ schema })],
     onSubmit: async (values) => {
       console.log(values);
       await setConfig(values as Partial<Config>);
@@ -29,16 +31,17 @@ export const Settings = () => {
 
   return (
     <div class="space-y-6">
-      <h1 class="text-2xl font-bold text-white">Settings</h1>
+      <h1 class="text-2xl font-bold text-white">{t('pages.settings.title')}</h1>
 
       <div>
         <form use:form>
           <div class="space-y-4 max-w-xl">
-            <Input label="User Token" name="token" />
-
-            <ValidationMessage for="token">
-              {(messages) => <span class="text-red-500 font-bold">{messages?.[0]}</span>}
-            </ValidationMessage>
+            <Input
+              label={t('pages.settings.form.userToken')}
+              name="token"
+              helperText={t('pages.settings.form.helperUserToken')}
+              error={getError(errors(), 'token')}
+            />
 
             <div class="m-auto">
               <Button class="btn btn-accent btn-wide" type="submit">

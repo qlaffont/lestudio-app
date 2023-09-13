@@ -5,7 +5,12 @@ module.exports = {
   plugins: [require('daisyui')],
   theme: {
     fontFamily: {
-      sans: ['"Roboto"']
-    }
-  }
-}
+      sans: ['"Roboto"'],
+    },
+    extend: {
+      colors: {
+        error: '#ff0000',
+      },
+    },
+  },
+};

@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import cx from 'classix';
-import { Ref, mergeProps, splitProps } from 'solid-js';
+import { Ref, createMemo, mergeProps, splitProps } from 'solid-js';
+import { translateZodErrorMessage } from 'zod-rosetty';
+import { useI18n } from '../../lang/useI18n';
 
 const variantclasss = {
   normal: 'border border-dark-10 focus-within:border-dark-30 rounded-md',
@@ -33,7 +36,7 @@ export interface InputProps {
   size?: InputSize;
   className?: string;
   type?: string;
-  error?;
+  error?: { message: string };
   prefixIcon?: string;
   suffixIcon?: string;
   prefixIconclass?: string;
@@ -48,6 +51,8 @@ export interface InputProps {
 }
 
 export const Input = (_props: InputProps) => {
+  const { t } = useI18n();
+
   const [props, otherProps] = splitProps(
     mergeProps(
       {
@@ -83,7 +88,7 @@ export const Input = (_props: InputProps) => {
       'required',
     ],
   );
-  const isError = !!props.error;
+  const isError = createMemo(() => !!props.error);
 
   return (
     <div class={cx('relative block max-w-xl', props.className)}>
@@ -93,7 +98,7 @@ export const Input = (_props: InputProps) => {
           class={cx(
             'block pb-1 text-white',
             variantLabelclasss[props.variant],
-            isError ? ' !text-error' : '',
+            isError() ? ' !text-error' : '',
             props.labelclass,
           )}
         >
@@ -108,7 +113,7 @@ export const Input = (_props: InputProps) => {
           variantclasss[props.variant],
           sizeclasss[props.size],
           props.disabled ? 'opacity-30' : '',
-          isError ? '!border-error ' : '',
+          isError() ? '!border-error ' : '',
         )}
       >
         {props.prefixIcon && (
@@ -158,9 +163,10 @@ export const Input = (_props: InputProps) => {
       </div>
       {(!!props.error || props.helperText) && (
         <p
-          class={cx('mt-1 text-sm', isError ? '!border-error !text-error' : 'text-white text-opacity-80')}
+          class={cx('mt-1 text-sm', isError() ? '!border-error !text-error' : 'text-white text-opacity-80')}
+          //@ts-ignore
           // eslint-disable-next-line solid/no-innerhtml
-          innerHTML={props.error || props.helperText}
+          innerHTML={translateZodErrorMessage(props.error, t) || props.helperText}
         />
       )}
     </div>
