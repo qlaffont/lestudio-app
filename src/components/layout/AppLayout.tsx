@@ -1,15 +1,23 @@
+/* eslint-disable no-empty */
 import { A } from '@solidjs/router';
 import { children, JSX, onMount } from 'solid-js';
-import toast, { Toaster } from 'solid-toast';
-import { updateGamesList } from '../../tauri';
+import toast from 'solid-toast';
+import { updateGamesList, updateMusicSoftware } from '../../tauri';
 
 export const AppLayout = (props: { children: JSX.Element }) => {
   const c = children(() => props?.children);
 
   onMount(() => {
     (async () => {
-      await updateGamesList();
-      toast.success('Updated games list');
+      await Promise.allSettled([
+        (async () => {
+          await updateGamesList();
+          toast.success('Updated games list');
+        })(),
+        (async () => {
+          await updateMusicSoftware();
+        })(),
+      ]);
     })();
   });
 
@@ -54,7 +62,6 @@ export const AppLayout = (props: { children: JSX.Element }) => {
       </div>
 
       <div class="h-screen flex-grow bg-zinc-600 overflow-auto p-4">{c()}</div>
-      <Toaster />
     </div>
   );
 };
