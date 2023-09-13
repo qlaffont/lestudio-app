@@ -24,7 +24,8 @@ fn main() {
             commands::get_config,
             commands::set_config,
             commands::update_games_list,
-            commands::get_games_list
+            commands::get_games_list,
+            commands::update_music_exe,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

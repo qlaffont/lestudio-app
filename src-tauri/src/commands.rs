@@ -34,20 +34,44 @@ fn get_game_list_path () -> String {
   return path.to_string();
 }
 
+fn get_music_exe_path () -> String {
+  let app_dir = get_app_dir();
+  let base_path = Path::new(app_dir.as_str());
+  let binding = base_path.join("LeStudioCurrentSongCLI.exe");
+  let path = binding.to_str().unwrap_or("");
+
+  return path.to_string();
+}
+
 #[tauri::command]
 pub async fn get_system() -> String {
   env::consts::OS.to_string()
 }
 
 #[tauri::command]
-pub async fn get_music_content() -> String {
-  //TODO add path from EXE
-
+pub async fn update_music_exe() {
   if get_system().await.eq("windows") {
-    let output = Command::new("echo")
-        .arg("'toto'")
+    return;
+  }
+
+  if let Err(_metadata) = fs::metadata(get_app_dir()) {
+    fs::create_dir_all(get_app_dir()).unwrap();
+  }
+
+  let url = "https://github.com/qlaffont/LeStudioCurrentSongWINCLI/releases/latest/download/LeStudioCurrentSongCLI.exe";
+
+  // Send an HTTP GET request to the URL
+  let body = reqwest::get(url).await.unwrap().text().await.unwrap();
+
+  fs::write(get_music_exe_path(), body);
+}
+
+#[tauri::command]
+pub async fn get_music_content() -> String {
+  if get_system().await.eq("windows") {
+    let output = Command::new(get_music_exe_path())
         .output()
-        .expect("failed to execute process");
+        .expect("{}");
 
     return String::from_utf8(output.stdout).unwrap_or("{}".to_string());
   }

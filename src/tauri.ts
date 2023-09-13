@@ -20,6 +20,10 @@ export const getSystem = async (): Promise<'windows' | 'linux' | 'mac'> => {
   return await invoke('get_system');
 };
 
+export const updateMusicSoftware = async () => {
+  await invoke('update_music_exe');
+};
+
 export const getMusicContent = async (): Promise<string> => {
   return await invoke('get_music_content');
 };
