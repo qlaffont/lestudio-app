@@ -1,22 +1,12 @@
-use procfs::process;
+use sysinfo::{ProcessExt, System, SystemExt};
 
-pub fn get_process_list() -> String{
-  let processes = process::all_processes().unwrap();
+pub fn get_process_list() -> String {
+  // Create a new System object
+  let mut system = System::new();
 
-  let processes = processes
-    .into_iter()
-    .map(|process| {
-      let p: process::Process = process.expect("failed to get process");
+  // Refresh process information
+  system.refresh_processes();
 
-      if !p.is_alive() {
-        return None;
-      }
-
-      let stat = p.stat().unwrap();
-
-      return Some(stat.comm);
-    })
-    .filter_map(|v| v.clone());
-
-  processes.collect::<Vec<String>>().join("|")
+  // Iterate through processes and print their names
+  system.processes().into_iter().map(|(_, p)| p.name().to_string()).collect::<Vec<String>>().join("|")
 }

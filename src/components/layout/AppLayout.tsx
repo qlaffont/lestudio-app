@@ -3,7 +3,7 @@
 import { A } from '@solidjs/router';
 import { children, JSX, onMount } from 'solid-js';
 import toast from 'solid-toast';
-import { getMusicContent, updateGamesList, updateMusicSoftware } from '../../tauri';
+import { getMusicContent, onProcessList, updateGamesList, updateMusicSoftware } from '../../tauri';
 
 export const AppLayout = (props: { children: JSX.Element }) => {
   const c = children(() => props?.children);
@@ -24,6 +24,10 @@ export const AppLayout = (props: { children: JSX.Element }) => {
         })(),
       ]);
     })();
+
+    onProcessList((processes) => {
+      console.log(processes);
+    });
   });
 
   return (
