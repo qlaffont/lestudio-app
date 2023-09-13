@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable no-empty */
 import { A } from '@solidjs/router';
 import { children, JSX, onMount } from 'solid-js';
 import toast from 'solid-toast';
-import { updateGamesList, updateMusicSoftware } from '../../tauri';
+import { getMusicContent, updateGamesList, updateMusicSoftware } from '../../tauri';
 
 export const AppLayout = (props: { children: JSX.Element }) => {
   const c = children(() => props?.children);
@@ -16,6 +17,10 @@ export const AppLayout = (props: { children: JSX.Element }) => {
         })(),
         (async () => {
           await updateMusicSoftware();
+
+          setInterval(async () => {
+            console.log(await getMusicContent());
+          }, 1000);
         })(),
       ]);
     })();

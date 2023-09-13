@@ -6,10 +6,10 @@
 
   @each $icon in $icons {
     &.icon-#{$icon} {
-      mask: url('/icons/#{$icon}.svg');
+      mask: url('/src/public/icons/#{$icon}.svg');
     }
     &.bg-#{$icon} {
-      background: url('/icons/#{$icon}.svg') no-repeat;
+      background: url('/src/public/icons/#{$icon}.svg') no-repeat;
       background-size: 100%;
     }
   }

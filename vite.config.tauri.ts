@@ -1,6 +1,6 @@
-import { defineConfig, mergeConfig } from 'vite'
-import baseViteConfig from './vite.config'
-import { tauri } from 'vite-plugin-tauri'
+import { defineConfig, mergeConfig } from 'vite';
+import baseViteConfig from './vite.config';
+import { tauri } from 'vite-plugin-tauri';
 
 // https://vitejs.dev/config/
 export default defineConfig(
@@ -13,7 +13,7 @@ export default defineConfig(
       // Tauri expects a fixed port, fail if that port is not available
       server: {
         strictPort: true,
-        open: false
+        open: false,
       },
       // to make use of `TAURI_PLATFORM`, `TAURI_ARCH`, `TAURI_FAMILY`,
       // `TAURI_PLATFORM_VERSION`, `TAURI_PLATFORM_TYPE` and `TAURI_DEBUG`
@@ -26,7 +26,7 @@ export default defineConfig(
         minify: !process.env.TAURI_DEBUG ? 'esbuild' : false,
         // produce sourcemaps for debug builds
         sourcemap: !!process.env.TAURI_DEBUG,
-      }
-    })
-  )
+      },
+    }),
+  ),
 );
