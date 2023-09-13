@@ -5,7 +5,7 @@
     "distDir": "Injected by vite-plugin-tauri"
   },
   "package": {
-    "productName": "LeStudio App",
+    "productName": "lestudio-app",
     "version": "1.0.0"
   },
   "tauri": {
