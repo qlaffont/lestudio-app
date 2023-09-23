@@ -1,0 +1,16 @@
+.icon {
+  mask-size: 100% !important;
+  mask-repeat: no-repeat !important;
+
+  $icons: 'cog','game', 'home', 'music';
+
+  @each $icon in $icons {
+    &.icon-#{$icon} {
+      mask: url('/src/public/icons/#{$icon}.svg');
+    }
+    &.bg-#{$icon} {
+      background: url('/src/public/icons/#{$icon}.svg') no-repeat;
+      background-size: 100%;
+    }
+  }
+}

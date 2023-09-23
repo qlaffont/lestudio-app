@@ -1,0 +1,93 @@
+/* eslint-disable @typescript-eslint/ban-types */
+import { Accessor, JSX, Setter, createContext, createSignal, onMount, useContext } from 'solid-js';
+import toast from 'solid-toast';
+import {
+  updateGamesList,
+  onProcessList,
+  onMusic,
+  MusicData,
+  onToggleAutoStart,
+  GameData,
+  onDetectedGame,
+  getConfig,
+  getVersion,
+  getSystem,
+} from '../../../../tauri';
+
+export const AppContext = createContext();
+
+export const AppProvider = (props: { children: JSX.Element }) => {
+  const [music, setMusic] = createSignal<MusicData>(null);
+  const [processes, setProcesses] = createSignal<string[]>([]);
+  const [detectedGame, setDetectedGame] = createSignal<GameData>({});
+  const [token, setToken] = createSignal<string>();
+  const [version, setVersion] = createSignal<string>();
+  const [system, setSystem] = createSignal<string>();
+
+  onMount(() => {
+    (async () => {
+      await Promise.allSettled([
+        (async () => {
+          await updateGamesList();
+          toast.success('Updated games list');
+        })(),
+        (async () => {
+          const config = await getConfig();
+          setToken(config.token);
+        })(),
+        (async () => {
+          setVersion(await getVersion());
+        })(),
+        (async () => {
+          setSystem(await getSystem());
+        })(),
+      ]);
+    })();
+
+    onProcessList((processes) => {
+      setProcesses(processes);
+    });
+
+    onMusic((music) => {
+      setMusic(music);
+    });
+    onDetectedGame((game) => {
+      setDetectedGame(game);
+    });
+
+    onToggleAutoStart();
+  });
+
+  return (
+    <AppContext.Provider
+      value={{
+        music,
+        processes,
+        detectedGame,
+        token,
+        setMusic,
+        setProcesses,
+        setDetectedGame,
+        setToken,
+        version,
+        system,
+      }}
+    >
+      {props.children}
+    </AppContext.Provider>
+  );
+};
+
+export const useApp = () =>
+  useContext(AppContext) as {
+    music: Accessor<MusicData>;
+    processes: Accessor<string[]>;
+    detectedGame: Accessor<GameData>;
+    token: Accessor<string>;
+    system: Accessor<string>;
+    version: Accessor<string>;
+    setMusic: Setter<MusicData>;
+    setProcesses: Setter<string[]>;
+    setDetectedGame: Setter<GameData[]>;
+    setToken: Setter<string>;
+  };
