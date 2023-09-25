@@ -7,6 +7,9 @@ export type Config = {
   token?: string;
   isAutoStartActivated?: boolean;
   notFoundAction?: 'clear' | 'justchatting' | 'nothing';
+  captionsOBSAddress?: string;
+  captionsOBSPassword?: string;
+  captionsLanguage?: string;
 };
 
 export type MusicData = null | {
@@ -32,6 +35,26 @@ export const getVersion = async (): Promise<string> => {
 
 export const getConfig = async (): Promise<Config> => {
   return JSON.parse(await invoke('get_config')) as Config;
+};
+
+export const getOBSAddress = async (): Promise<string> => {
+  const config = await getConfig();
+
+  return config?.captionsOBSAddress || '127.0.0.1:4455';
+};
+
+export const getOBSPassword = async (): Promise<string> => {
+  const config = await getConfig();
+
+  return config?.captionsOBSPassword && config?.captionsOBSPassword?.length > 0
+    ? config?.captionsOBSPassword
+    : undefined;
+};
+
+export const getCaptionsLanguage = async (): Promise<string> => {
+  const config = await getConfig();
+
+  return config?.captionsLanguage || 'en-GB';
 };
 
 export const setConfig = async (data: Partial<Config>) => {

@@ -25,6 +25,9 @@ struct Config {
     token: Option<String>,
     isAutoStartActivated: Option<bool>,
     notFoundAction: Option<String>,
+    captionsOBSAddress: Option<String>,
+    captionsOBSPassword: Option<String>,
+    captionsLanguage: Option<String>,
 }
 
 
