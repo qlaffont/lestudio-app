@@ -1,5 +1,5 @@
 
-use crate::commands::{self, get_token, get_system};
+use crate::commands::{get_token, get_system};
 use reqwest;
 use std::{fs, process::Command, collections::HashMap};
 use std::fs::File;

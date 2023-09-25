@@ -1,10 +1,9 @@
 use std::env;
-use std::process::Command;
 use serde::Deserialize;
 use std::fs;
 use reqwest;
 
-use crate::{filepath::{get_music_exe_path, get_config_path, get_app_dir, get_game_list_path, get_local_game_list_path}, process_list::{get_local_games_list, GameIGDB}};
+use crate::{filepath::{get_config_path, get_app_dir, get_game_list_path, get_local_game_list_path}, process_list::{get_local_games_list, GameIGDB}};
 
 
 /**
