@@ -36,7 +36,7 @@ export const enI18n = {
         errorToken: 'Invalid token !',
         success: 'Token saved !',
       },
-      startOnBoot: 'Start on system boot',
+      startOnBoot: 'Start minified on system boot',
       close: 'To close this program, you need to right click on system tray and click on Quit.',
     },
     music: {

@@ -74,7 +74,7 @@ export const Settings = () => {
           </div>
         </form>
 
-        <div class="form-control w-52 pt-12">
+        <div class="form-control w-[250px] pt-12">
           <label class="cursor-pointer label">
             <span class="label-text">{t('pages.settings.startOnBoot')}</span>
             <input

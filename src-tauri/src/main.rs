@@ -15,11 +15,7 @@ use tauri::{CustomMenuItem, SystemTrayMenu, SystemTrayMenuItem, SystemTrayEvent,
 use tauri_plugin_autostart::MacosLauncher;
 use async_std::task;
 
-use crate::filepath::get_app_dir;
-
-
 fn main() {
-    let mut is_showed = false;
     let mut is_autostart_enabled = false;
 
     task::block_on(async {
@@ -27,11 +23,11 @@ fn main() {
     });
 
     let quit = CustomMenuItem::new("quit".to_string(), "Quit");
-    let hide = CustomMenuItem::new("hide".to_string(), "Hide");
+    let hide = CustomMenuItem::new("hide".to_string(), if is_autostart_enabled == true {"Show"} else {"Hide"});
     let mut auto_start = CustomMenuItem::new("auto_start".to_string(), "Start on boot");
 
     if is_autostart_enabled == true {
-        auto_start = auto_start.selected()
+        auto_start = auto_start.selected();
     }
 
     let tray_menu = SystemTrayMenu::new()
@@ -54,6 +50,10 @@ fn main() {
             window.set_maximizable(false);
             window.set_min_size(Some(Size::Logical(LogicalSize { width: 400.0, height: 600.0 })));
             window.set_max_size(Some(Size::Logical(LogicalSize { width: 675.0, height: 600.0 })));
+
+            if is_autostart_enabled {
+                window.hide();
+            }
 
             thread::spawn(move || {
                 task::block_on(async {
