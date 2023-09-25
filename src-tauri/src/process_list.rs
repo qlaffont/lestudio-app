@@ -49,8 +49,7 @@ pub async fn get_local_games_list() -> Vec<GameIGDB> {
 }
 
 pub async fn periodically_send_process_list(window: &tauri::Window) {
-
-  update_games_list().await;
+  update_games_list().await.unwrap_or("".to_string());
 
   let mut last_detected_process_name: Option<GameIGDB> = None;
 
@@ -104,17 +103,17 @@ pub async fn periodically_send_process_list(window: &tauri::Window) {
 
       if let Some(game) = &detected_game {
         let new_url = url.to_string() + &game.twitchCategoryId + "&token=" + &token;
-        client.post(new_url).send().await.expect("issue with post");
+        client.post(new_url).send().await;
       }else {
         if let Some(default_action) = (get_default_action().await).ok(){
           if default_action.eq("clear"){
             let new_url = url.to_string() + "undefined" + "&token=" + &token;
-            client.post(new_url).send().await.expect("issue with post");
+            client.post(new_url).send().await;
           }
 
           if default_action.eq("justchatting"){
             let new_url = url.to_string() + "509658" + "&token=" + &token;
-            client.post(new_url).send().await.expect("issue with post");
+            client.post(new_url).send().await;
           }
         }
       }

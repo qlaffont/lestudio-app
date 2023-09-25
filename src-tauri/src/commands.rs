@@ -149,14 +149,21 @@ pub async fn update_games_list() -> Result<String, ()> {
       None => String::new(),  // Handle the None case, provide a default value if needed
   };
 
+  let body = reqwest::get(url).await;
+
+  if body.is_err() {
+    return Err(());
+  }
+
+  let body_result = body.unwrap().text().await.unwrap();
+
   // Send an HTTP GET request to the URL
-  let body = reqwest::get(url).await.unwrap().text().await.unwrap();
 
   if let Err(_metadata) = fs::metadata(get_app_dir()) {
     fs::create_dir_all(get_app_dir());
   }
 
-  fs::write(get_game_list_path(), body);
+  fs::write(get_game_list_path(), body_result);
 
   return Ok("ok".to_string());
 }

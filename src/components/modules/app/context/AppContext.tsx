@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/ban-types */
 import { Accessor, JSX, Setter, createContext, createSignal, onMount, useContext } from 'solid-js';
 import toast from 'solid-toast';
@@ -13,10 +15,12 @@ import {
   getVersion,
   getSystem,
 } from '../../../../tauri';
+import { useI18n } from '../../../../lang/useI18n';
 
 export const AppContext = createContext();
 
 export const AppProvider = (props: { children: JSX.Element }) => {
+  const { t } = useI18n();
   const [music, setMusic] = createSignal<MusicData>(null);
   const [processes, setProcesses] = createSignal<string[]>([]);
   const [detectedGame, setDetectedGame] = createSignal<GameData>({});
@@ -28,8 +32,12 @@ export const AppProvider = (props: { children: JSX.Element }) => {
     (async () => {
       await Promise.allSettled([
         (async () => {
-          await updateGamesList();
-          toast.success('Updated games list');
+          try {
+            await updateGamesList();
+            toast.success(t('global.gameList.updated'));
+          } catch (error) {
+            toast.error(t('global.gameList.error'));
+          }
         })(),
         (async () => {
           const config = await getConfig();

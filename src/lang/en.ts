@@ -1,6 +1,12 @@
 import { ZodEn } from './zodEn';
 
 export const enI18n = {
+  global: {
+    gameList: {
+      updated: 'Updated game list !',
+      error: 'You are running the last updated game list !',
+    },
+  },
   pages: {
     home: {
       title: 'Home',

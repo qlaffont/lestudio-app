@@ -40,12 +40,18 @@ pub async fn update_music_exe() {
   let url = "https://github.com/qlaffont/LeStudioCurrentSongWINCLI/releases/latest/download/LeStudioCurrentSongCLI.exe";
 
   // Send an HTTP GET request to the URL
-  let body = reqwest::get(url).await.unwrap().bytes().await.unwrap();
+  let body = reqwest::get(url).await;
+
+  if body.is_err() {
+    return;
+  }
+
+  let body_result = body.unwrap().bytes().await.unwrap();
 
   //fs::write(get_music_exe_path(), body);
   let mut file = File::create(get_music_exe_path()).unwrap();
   // Write a slice of bytes to the file
-  file.write_all(body.as_ref()).unwrap();
+  file.write_all(body_result.as_ref()).unwrap();
 }
 
 pub async fn get_music_content() -> String {
@@ -93,7 +99,7 @@ pub async fn periodically_send_process_music(window: &tauri::Window) {
 
           // Send an HTTP GET request to the URL
           let client = reqwest::Client::new();
-          client.patch(url).json(&map).send().await.unwrap();
+          client.patch(url).json(&map).send().await;
         }
       }
     }
