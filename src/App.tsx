@@ -8,6 +8,7 @@ import { enI18n } from './lang/en';
 import { Toaster } from 'solid-toast';
 import { AppProvider } from './components/modules/app/context/AppContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/solid-query';
+import { CaptionsProvider } from './components/modules/captions/context/CaptionsContext';
 // import SolidQueryDevkit from 'solid-query-devkit';
 
 const locales = { en: { dict: enI18n, locale: en } };
@@ -21,12 +22,14 @@ const App: Component = () => {
       <QueryClientProvider client={queryClient}>
         <RosettyProvider languages={locales} defaultLanguage={defaultLanguage}>
           <AppProvider>
-            <Router source={hashIntegration()}>
-              <AppLayout>
-                <AppRoutes />
-              </AppLayout>
-            </Router>
-            <Toaster />
+            <CaptionsProvider>
+              <Router source={hashIntegration()}>
+                <AppLayout>
+                  <AppRoutes />
+                </AppLayout>
+              </Router>
+              <Toaster />
+            </CaptionsProvider>
           </AppProvider>
         </RosettyProvider>
         {/* To Debug solid query in front */}

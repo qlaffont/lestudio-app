@@ -34,6 +34,13 @@ export const AppLayout = (props: { children: JSX.Element }) => {
                   class="hover:opacity-60 icon icon-game bg-white block h-6 w-6"
                 />
               </div>
+              <div>
+                <A
+                  activeClass="!bg-sky-300"
+                  href="/captions"
+                  class="hover:opacity-60 icon icon-captions bg-white block h-6 w-6"
+                />
+              </div>
             </div>
           </div>
           <div>
@@ -73,6 +80,13 @@ export const AppLayout = (props: { children: JSX.Element }) => {
                     activeClass="!bg-sky-300"
                     href="/game"
                     class="hover:opacity-60 icon icon-game bg-white block h-6 w-6"
+                  />
+                </div>
+                <div>
+                  <A
+                    activeClass="!bg-sky-300"
+                    href="/captions"
+                    class="hover:opacity-60 icon icon-captions bg-white block h-6 w-6"
                   />
                 </div>
               </div>

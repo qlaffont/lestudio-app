@@ -3,6 +3,7 @@ import { Home } from './home';
 import { Settings } from './settings';
 import { Music } from './music';
 import { Game } from './game';
+import { Captions } from './captions';
 
 export const AppRoutes = () => {
   return (
@@ -11,6 +12,7 @@ export const AppRoutes = () => {
       <Route path="/settings" component={Settings} />
       <Route path="/music" component={Music} />
       <Route path="/game" component={Game} />
+      <Route path="/captions" component={Captions} />
     </Routes>
   );
 };

@@ -2,7 +2,7 @@
   mask-size: 100% !important;
   mask-repeat: no-repeat !important;
 
-  $icons: 'cog','game', 'home', 'music';
+  $icons: 'cog','game', 'home', 'music', 'captions';
 
   @each $icon in $icons {
     &.icon-#{$icon} {
