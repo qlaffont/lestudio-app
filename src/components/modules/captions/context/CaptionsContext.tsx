@@ -28,6 +28,8 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
   onMount(() => {
     //@ts-ignore
     setIsCompatible('webkitSpeechRecognition' in window);
+
+    startRecognition();
   });
 
   createEffect(() => {
@@ -88,7 +90,7 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
       };
 
       newRecognition.onend = function () {
-        setUpdate(Date.now());
+        startRecognition();
       };
 
       newRecognition.start();
@@ -113,12 +115,7 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
     setUpdate(Date.now());
   };
 
-  createEffect(() => {
-    if (lastUpdate() && startRecognition) {
-      startRecognition();
-    }
-  });
-
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return (
     <CaptionsContext.Provider value={{ isCompatible, lastText, isConnectedToOBS } satisfies ContextReturn}>
       {props.children}
