@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/ban-types */
-import { Accessor, JSX, createContext, createEffect, createSignal, onMount, useContext } from 'solid-js';
+import { Accessor, JSX, createContext, createEffect, createMemo, createSignal, onMount, useContext } from 'solid-js';
 import OBSWebSocket from 'obs-websocket-js';
 import { getCaptionsLanguage, getOBSAddress, getOBSPassword } from '../../../../tauri';
 import { useSocket } from '../../../../services/useSocket';
 import { useApp } from '../../app/context/AppContext';
+import toast from 'solid-toast';
+import { useLocation } from '@solidjs/router';
 // import toast from 'solid-toast';
 
 export const CaptionsContext = createContext();
@@ -30,6 +32,8 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
   const [intervalOBS, setIntervalOBS] = createSignal<NodeJS.Timer>();
   const [isConnectedToOBS, setConnectedToOBS] = createSignal<boolean>(false);
   const [obsAddress, setOBSAddress] = createSignal<string>();
+  const location = useLocation();
+  const pathname = createMemo(() => location.pathname);
 
   onMount(() => {
     //@ts-ignore
@@ -115,8 +119,11 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
       setConnectedToOBS(true);
     } catch (error) {
       setConnectedToOBS(false);
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      // toast.error(`Failed to connect to OBS, ${error.code}, ${error.message}`);
+      if (pathname() === '/captions') {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        toast.error(`Failed to connect to OBS, ${error.code}, ${error.message}`);
+        console.error(error);
+      }
     }
 
     setOBS(obs);
