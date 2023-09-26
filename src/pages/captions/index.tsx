@@ -11,6 +11,7 @@ import zod from '../../lang/zod';
 import { Select, createOptions } from '@thisbeyond/solid-select';
 import { LangOptions } from '../../components/modules/captions/utils/langOptions';
 import { createMemo, onMount } from 'solid-js';
+import toast from 'solid-toast';
 
 const schema = zod.object({
   captionsOBSAddress: zod.string().min(1),
@@ -27,6 +28,7 @@ export const Captions = () => {
     extend: [validator({ schema })],
     onSubmit: async (values: zod.infer<typeof schema>) => {
       await setConfig(values as Partial<Config>);
+      toast.success(t('pages.captions.form.success'));
     },
   });
 

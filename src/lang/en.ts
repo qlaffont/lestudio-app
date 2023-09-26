@@ -66,6 +66,7 @@ export const enI18n = {
         captionsOBSPassword: 'OBS WebSocket Password',
         captionsLanguage: 'Captions Language',
         action: 'Submit',
+        success: 'Informations saved !',
       },
       langOptions: {
         [BCP47.AR_SA]: 'Arabic',
