@@ -10,7 +10,7 @@ import { Config, setConfig, getCaptionsData } from '../../tauri';
 import zod from '../../lang/zod';
 import { Select, createOptions } from '@thisbeyond/solid-select';
 import { LangOptions } from '../../components/modules/captions/utils/langOptions';
-import { onMount } from 'solid-js';
+import { createEffect, createMemo, onMount } from 'solid-js';
 
 const schema = zod.object({
   captionsOBSAddress: zod.string().min(1),
@@ -33,11 +33,15 @@ export const Captions = () => {
   onMount(() => {
     (async () => {
       const config = await getCaptionsData();
-      setData(config);
+      setData({ ...config, captionsOBSPassword: config.captionsOBSPassword || null });
     })();
   });
 
   const captionsLanguageOptions = createOptions(LangOptions(t), { key: 'label' });
+  const selectLanguageValue = createMemo(() => {
+    const v = captionsLanguageOptions.options('').find((v) => v.value.value === data().captionsLanguage);
+    return v ? v.value : undefined;
+  });
 
   return (
     <div class="space-y-6">
@@ -79,7 +83,7 @@ export const Captions = () => {
             </label>
             <Select
               {...captionsLanguageOptions}
-              initialValue={captionsLanguageOptions.options('').find((v) => v.value.value === data().captionsLanguage)}
+              initialValue={selectLanguageValue()}
               format={(item) => item.label}
               onChange={(v) => {
                 setData('captionsLanguage', v.value);
