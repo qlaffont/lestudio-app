@@ -56,7 +56,7 @@ jobs:
           tagName: v__VERSION__
           releaseName: 'v__VERSION__'
           releaseDraft: true
-          releaseBody: "See the assets to download this version and install."
+          releaseBody: "Please check https://github.com/qlaffont/lestudio-app/releases to have changelog !"
           prerelease: false
           includeDebug: true
           includeUpdaterJson: true
