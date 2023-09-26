@@ -69,7 +69,7 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
       newRecognition.interimResults = true;
       newRecognition.lang = await getCaptionsLanguage();
 
-      newRecognition.onresult = function (event) {
+      newRecognition.onresult = async function (event) {
         //@ts-ignore
         const haveResultFinal = Object.values(event.results).find((e) => e.isFinal);
 
@@ -87,7 +87,7 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
 
         if (obs()) {
           try {
-            obs().call('SendStreamCaption', { captionText: text });
+            await obs().call('SendStreamCaption', { captionText: text });
             // eslint-disable-next-line no-empty
           } catch (error) {}
         }
