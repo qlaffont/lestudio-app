@@ -23,7 +23,7 @@ struct Payload {
      currentSongTitle: String,
      currentSongAuthor: String,
      currentSongAlbum: String,
-     currentSongImage: String,
+     currentSongImage: Option<String>,
      currentSongIsPlaying: bool
  }
 
@@ -94,7 +94,7 @@ pub async fn periodically_send_process_music(window: &tauri::Window) {
           map.insert("currentSongTitle", data.currentSongTitle.clone());
           map.insert("currentSongAuthor", data.currentSongAuthor.clone());
           map.insert("currentSongAlbum", data.currentSongAlbum.clone());
-          map.insert("currentSongImage", data.currentSongImage.clone());
+          map.insert("currentSongImage", if data.currentSongImage.is_none {data.currentSongImage.clone()} else {"null"});
           map.insert("currentSongIsPlaying", if data.currentSongIsPlaying == true { "true".to_string() } else { "false".to_string() });
 
           // Send an HTTP GET request to the URL

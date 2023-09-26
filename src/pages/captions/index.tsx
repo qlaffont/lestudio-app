@@ -10,7 +10,7 @@ import { Config, setConfig, getCaptionsData } from '../../tauri';
 import zod from '../../lang/zod';
 import { Select, createOptions } from '@thisbeyond/solid-select';
 import { LangOptions } from '../../components/modules/captions/utils/langOptions';
-import { createEffect, createMemo, onMount } from 'solid-js';
+import { createMemo, onMount } from 'solid-js';
 
 const schema = zod.object({
   captionsOBSAddress: zod.string().min(1),
