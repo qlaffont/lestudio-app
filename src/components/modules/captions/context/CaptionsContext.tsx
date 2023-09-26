@@ -39,7 +39,7 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
   });
 
   createEffect(() => {
-    if (!isConnectedToOBS()) {
+    if (!isConnectedToOBS() && isCompatible()) {
       if (intervalOBS()) {
         clearInterval(intervalOBS());
       }

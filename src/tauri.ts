@@ -37,6 +37,17 @@ export const getConfig = async (): Promise<Config> => {
   return JSON.parse(await invoke('get_config')) as Config;
 };
 
+export const getCaptionsData = async () => {
+  const config = await getConfig();
+
+  return {
+    captionsOBSAddress: config?.captionsOBSAddress || '127.0.0.1:4455',
+    captionsOBSPassword:
+      config?.captionsOBSPassword && config?.captionsOBSPassword?.length > 0 ? config?.captionsOBSPassword : undefined,
+    captionsLanguage: config?.captionsLanguage || 'en-GB',
+  };
+};
+
 export const getOBSAddress = async (): Promise<string> => {
   const config = await getConfig();
 
