@@ -1,6 +1,6 @@
 [package]
 name = "lestudio-app"
-version = "1.1.1"
+version = "1.1.2"
 description = "LeStudio official app"
 authors = ["qlaffont"]
 license = "MIT"
