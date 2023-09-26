@@ -108,25 +108,25 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
   };
 
   const tryToConnectToOBS = async () => {
-    //Instanciate OBS CLIENT IF INFOS
-    const obs = new OBSWebSocket();
+    if (!isConnectedToOBS()) {
+      //Instanciate OBS CLIENT IF INFOS
+      const obs = new OBSWebSocket();
 
-    try {
-      const obsAddress = `ws://${await getOBSAddress()}`;
-      setOBSAddress(obsAddress);
-      await obs.connect(obsAddress, await getOBSPassword());
-      setOBS(obs);
-      setConnectedToOBS(true);
-    } catch (error) {
-      setConnectedToOBS(false);
-      if (pathname() === '/captions') {
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        toast.error(`Failed to connect to OBS, ${error.code}, ${error.message}`);
-        console.error(error);
+      try {
+        const obsAddress = `ws://${await getOBSAddress()}`;
+        setOBSAddress(obsAddress);
+        await obs.connect(obsAddress, await getOBSPassword());
+        setOBS(obs);
+        setConnectedToOBS(true);
+      } catch (error) {
+        setConnectedToOBS(false);
+        if (pathname() === '/captions') {
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          toast.error(`Failed to connect to OBS, ${error.code}, ${error.message}`);
+          console.error(error);
+        }
       }
     }
-
-    setOBS(obs);
   };
 
   createEffect(() => {

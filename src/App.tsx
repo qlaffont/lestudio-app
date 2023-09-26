@@ -20,18 +20,18 @@ const App: Component = () => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <RosettyProvider languages={locales} defaultLanguage={defaultLanguage}>
-          <AppProvider>
-            <CaptionsProvider>
-              <Router source={hashIntegration()}>
+        <Router source={hashIntegration()}>
+          <RosettyProvider languages={locales} defaultLanguage={defaultLanguage}>
+            <AppProvider>
+              <CaptionsProvider>
                 <AppLayout>
                   <AppRoutes />
                 </AppLayout>
-              </Router>
-              <Toaster />
-            </CaptionsProvider>
-          </AppProvider>
-        </RosettyProvider>
+                <Toaster />
+              </CaptionsProvider>
+            </AppProvider>
+          </RosettyProvider>
+        </Router>
         {/* To Debug solid query in front */}
         {/* <SolidQueryDevkit /> */}
       </QueryClientProvider>
