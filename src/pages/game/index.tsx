@@ -149,7 +149,7 @@ export const Game = () => {
         </div>
       </div>
 
-      <div class="space-y-3 max-w-xl">
+      <div class="space-y-2 max-w-xl">
         <h2 class="font-bold text-white">{t('pages.game.notFound.title')}</h2>
 
         <Select
