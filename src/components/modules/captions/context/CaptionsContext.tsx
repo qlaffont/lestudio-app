@@ -115,6 +115,10 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
       try {
         const obsAddress = `ws://${await getOBSAddress()}`;
         setOBSAddress(obsAddress);
+        obs.once('ConnectionClosed', () => {
+          setConnectedToOBS(false);
+          tryToConnectToOBS();
+        });
         await obs.connect(obsAddress, await getOBSPassword());
         setOBS(obs);
         setConnectedToOBS(true);
