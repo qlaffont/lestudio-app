@@ -59,7 +59,7 @@ export const Captions = () => {
 
       <div>
         <h2 class="font-bold">{t('pages.captions.lastText')}</h2>
-        <p class="line-clamp-2">{lastText()}</p>
+        <p class="line-clamp-2 h-[48px]">{lastText()}</p>
       </div>
 
       <form use:form>
@@ -80,9 +80,7 @@ export const Captions = () => {
           />
 
           <div class="space-y-2">
-            <label class="text-white">
-              {t('pages.captions.form.captionsLanguage')} {data().captionsLanguage}
-            </label>
+            <label class="text-white">{t('pages.captions.form.captionsLanguage')}</label>
             <Select
               {...captionsLanguageOptions}
               initialValue={selectLanguageValue()}
