@@ -67,22 +67,21 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
 
       const newRecognition = new webkitSpeechRecognition();
       newRecognition.interimResults = true;
+      newRecognition.continuous = true;
       newRecognition.lang = await getCaptionsLanguage();
 
       newRecognition.onresult = async function (event) {
+        const index = Object.keys(event.results).length;
+        const result = event.results[index - 1];
+        console.log(event.results);
         //@ts-ignore
-        const haveResultFinal = Object.values(event.results).find((e) => e.isFinal);
+        const haveResultFinal = result.isFinal;
 
-        let text = '';
+        const text = result['0'].transcript.trim();
 
         if (haveResultFinal) {
-          text = haveResultFinal['0'].transcript.trim();
-        } else {
-          text = Object.values(event.results)
-            .map((e) => e['0'].transcript.trim() as string)
-            .join(' ');
+          // TODO Translate if needed
         }
-
         setLastText(text);
 
         if (obs()) {
