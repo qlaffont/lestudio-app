@@ -29,7 +29,6 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
   const [recognition, setRecognition] = createSignal<SpeechRecognition>();
 
   const [obs, setOBS] = createSignal<OBSWebSocket>();
-  const [intervalOBS, setIntervalOBS] = createSignal<NodeJS.Timer>();
   const [isConnectedToOBS, setConnectedToOBS] = createSignal<boolean>(false);
   const [obsAddress, setOBSAddress] = createSignal<string>();
   const location = useLocation();
@@ -44,18 +43,7 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
 
   createEffect(() => {
     if (!isConnectedToOBS() && isCompatible()) {
-      if (intervalOBS()) {
-        clearInterval(intervalOBS());
-      }
-
-      const inter = setInterval(() => {
-        tryToConnectToOBS();
-      }, 10000);
-
-      setIntervalOBS(inter);
-    } else {
-      clearInterval(intervalOBS());
-      setIntervalOBS(undefined);
+      tryToConnectToOBS();
     }
   });
 
@@ -127,6 +115,10 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
           toast.error(`Failed to connect to OBS, ${error.code}, ${error.message}`);
           console.error(error);
         }
+
+        setTimeout(() => {
+          tryToConnectToOBS();
+        }, 10000);
       }
     }
   };
