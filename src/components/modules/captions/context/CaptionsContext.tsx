@@ -73,7 +73,6 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
       newRecognition.onresult = async function (event) {
         const index = Object.keys(event.results).length;
         const result = event.results[index - 1];
-        console.log(event.results);
         //@ts-ignore
         const haveResultFinal = result.isFinal;
 
