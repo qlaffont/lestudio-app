@@ -103,7 +103,7 @@ fn main() {
             commands::add_game_to_list,
         ])
         .on_system_tray_event(|app, event| match event {
-            SystemTrayEvent::DoubleClick {
+            SystemTrayEvent::LeftClick {
                 ..
             } => {
                 let window = app.get_window("main").unwrap();

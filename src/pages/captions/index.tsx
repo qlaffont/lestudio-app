@@ -10,7 +10,7 @@ import { Config, setConfig, getCaptionsData } from '../../tauri';
 import zod from '../../lang/zod';
 import { Select, createOptions } from '@thisbeyond/solid-select';
 import { LangOptions } from '../../components/modules/captions/utils/langOptions';
-import { createMemo, onMount } from 'solid-js';
+import { createMemo, createSignal, onMount } from 'solid-js';
 import toast from 'solid-toast';
 
 const schema = zod.object({
@@ -46,6 +46,8 @@ export const Captions = () => {
     return v ? v.value : undefined;
   });
 
+  const [isVisible, setIsVisible] = createSignal(false);
+
   return (
     <div class="space-y-6">
       <h1 class="text-2xl font-bold text-white">{t('pages.captions.title')}</h1>
@@ -78,6 +80,10 @@ export const Captions = () => {
             name="captionsOBSPassword"
             error={getError(errors(), 'captionsOBSPassword')}
             value={data().captionsOBSPassword}
+            type={isVisible() ? 'text' : 'password'}
+            suffixIcon={isVisible() ? 'icon icon-eye-full' : 'icon icon-eye'}
+            suffixIconclass="mr-2"
+            onClick={() => setIsVisible((v) => !v)}
           />
 
           <div class="space-y-2">

@@ -49,6 +49,8 @@ export const Settings = () => {
     })();
   });
 
+  const [isVisible, setIsVisible] = createSignal(false);
+
   return (
     <div class="space-y-6">
       <h1 class="text-2xl font-bold text-white">{t('pages.settings.title')}</h1>
@@ -59,6 +61,10 @@ export const Settings = () => {
             <Input
               label={t('pages.settings.form.userToken')}
               name="token"
+              type={isVisible() ? 'text' : 'password'}
+              suffixIcon={isVisible() ? 'icon icon-eye-full' : 'icon icon-eye'}
+              suffixIconclass="mr-2"
+              onClick={() => setIsVisible((v) => !v)}
               helperText={t('pages.settings.form.helperUserToken')}
               error={getError(errors(), 'token')}
               value={data().token}
