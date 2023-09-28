@@ -45,6 +45,12 @@ fn main() {
 
     let system_tray = SystemTray::new().with_menu(tray_menu);
 
+    let mut window_size: (i32, i32) = (0,0);
+
+    task::block_on(async {
+        window_size = commands::get_window_size().await.unwrap_or((400, 600));
+    });
+
     tauri::Builder::default()
         .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
             let window = app.get_window("main").unwrap();
@@ -63,10 +69,10 @@ fn main() {
 
             window.set_closable(false);
             window.set_maximizable(false);
-            window.set_min_size(Some(Size::Logical(LogicalSize {
-                width: 400.0,
-                height: 600.0,
-            })));
+            window.set_size(Size::Logical(LogicalSize {
+                width: f64::from(window_size.0),
+                height: f64::from(window_size.1),
+            }));
             window.set_max_size(Some(Size::Logical(LogicalSize {
                 width: 675.0,
                 height: 600.0,

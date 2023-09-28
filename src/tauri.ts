@@ -2,6 +2,8 @@
 import { listen } from '@tauri-apps/api/event';
 import { invoke } from '@tauri-apps/api/tauri';
 import { disable, enable } from 'tauri-plugin-autostart-api';
+import { appWindow } from '@tauri-apps/api/window';
+import debounce from 'lodash/debounce';
 
 export type Config = {
   token?: string;
@@ -10,6 +12,8 @@ export type Config = {
   captionsOBSAddress?: string;
   captionsOBSPassword?: string;
   captionsLanguage?: string;
+  height?: string;
+  width?: string;
 };
 
 export type MusicData = null | {
@@ -141,5 +145,15 @@ export const onDetectedGame = async (callback: (game: GameData) => void) => {
     const data = JSON.parse((event.payload as { message: string }).message) as GameData;
     console.info('[INFO] Detected Game :', data?.processName, '/ Twitch Category Id :', data?.twitchCategoryId);
     callback(data);
+  });
+};
+
+export const onResize = async () => {
+  const debounceFunction = debounce((s: { width: string; height: string }) => {
+    setConfig({ width: s.width.toString(), height: s.height.toString() });
+  }, 1000);
+
+  await appWindow.onResized(({ payload: size }) => {
+    debounceFunction(size);
   });
 };

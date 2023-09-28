@@ -28,6 +28,8 @@ struct Config {
     captionsOBSAddress: Option<String>,
     captionsOBSPassword: Option<String>,
     captionsLanguage: Option<String>,
+    width: Option<String>,
+    height: Option<String>,
 }
 
 
@@ -47,6 +49,28 @@ pub async fn get_token() -> Result<String, ()>{
       Err(_) => Err(()),
   }
 }
+
+pub async fn get_window_size() -> Result<(i32, i32), ()>{
+  let config_string = get_config().await;
+
+  let parsed_config: Result<Config, _> = serde_json::from_str(&config_string);
+
+  match parsed_config {
+      Ok(config) => {
+        if let Some(width) = config.width {
+          if let Some(height) = config.height {
+            return Ok((width.parse::<i32>().unwrap(), height.parse::<i32>().unwrap()));
+          }else {
+            return Ok((400, 600))
+          }
+        }else {
+          return Ok((400, 600))
+        }
+      },
+      Err(_) => Ok((400, 600)),
+  }
+}
+
 
 pub async fn get_default_action() -> Result<String, ()>{
   let config_string = get_config().await;
