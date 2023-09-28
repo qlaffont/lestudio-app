@@ -73,10 +73,6 @@ fn main() {
                 width: f64::from(window_size.0),
                 height: f64::from(window_size.1),
             }));
-            window.set_max_size(Some(Size::Logical(LogicalSize {
-                width: 675.0,
-                height: 600.0,
-            })));
 
             if is_autostart_enabled {
                 window.hide();

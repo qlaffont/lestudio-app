@@ -60,11 +60,6 @@
     "windows": [
       {
         "title": "LeStudio App",
-        "minWidth": 400,
-        "maxWidth": 675,
-        "minHeight": 600,
-        "width": 600,
-        "height": 600,
         "resizable": true,
         "fullscreen": false
       }
