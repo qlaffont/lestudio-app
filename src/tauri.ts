@@ -129,7 +129,7 @@ export const onProcessList = async (callback: (processes: string[]) => void) => 
 export const onMusic = async (callback: (music: MusicData) => void) => {
   await listen('music', (event) => {
     const data = JSON.parse((event.payload as { message: string }).message) as MusicData;
-    console.info('[INFO] New Music :', data?.currentSongTitle);
+    // console.info('[INFO] New Music :', data?.currentSongTitle);
     callback(data);
   });
 };
@@ -143,7 +143,7 @@ export const onToggleAutoStart = async () => {
 export const onDetectedGame = async (callback: (game: GameData) => void) => {
   await listen('detected-game', (event) => {
     const data = JSON.parse((event.payload as { message: string }).message) as GameData;
-    console.info('[INFO] Detected Game :', data?.processName, '/ Twitch Category Id :', data?.twitchCategoryId);
+    // console.info('[INFO] Detected Game :', data?.processName, '/ Twitch Category Id :', data?.twitchCategoryId);
     callback(data);
   });
 };
