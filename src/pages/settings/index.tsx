@@ -30,7 +30,7 @@ export const Settings = () => {
 
   const { form, setData, errors, data } = createForm({
     extend: [validator({ schema })],
-    onSubmit: async (values: { token: string }) => {
+    onSubmit: async (values: zod.infer<typeof schema>) => {
       mutate({
         token: values.token,
       });
@@ -44,9 +44,7 @@ export const Settings = () => {
   onMount(() => {
     (async () => {
       const config = await getConfig();
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-ignore
-      setData(config);
+      setData({ token: config?.token || null });
       setIsAutoStartEnabled(config.isAutoStartActivated || false);
     })();
   });

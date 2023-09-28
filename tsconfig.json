@@ -8,9 +8,6 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "types": ["vite/client", "node", "dom-speech-recognition"],
-    "lib": [
-      "esnext"
-    ],
     "noEmit": true,
     "isolatedModules": true,
   },

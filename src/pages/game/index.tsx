@@ -79,7 +79,7 @@ export const Game = () => {
 
   const { form, setData, isValid, reset } = createForm({
     extend: [validator({ schema: addGameSchema })],
-    onSubmit: async (values: { twitchCategoryId: string; processName: string }) => {
+    onSubmit: async (values: zod.infer<typeof addGameSchema>) => {
       await addGameToLocaleGameList({ twitchCategoryId: values.twitchCategoryId, processName: values.processName });
 
       try {
