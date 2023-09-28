@@ -104,6 +104,20 @@ fn main() {
             commands::add_game_to_list,
         ])
         .on_system_tray_event(|app, event| match event {
+            SystemTrayEvent::DoubleClick {
+                ..
+            } => {
+                let window = app.get_window("main").unwrap();
+                let item_handle = app.tray_handle().get_item("hide");
+                if !(window.is_visible().unwrap()) {
+                    window.show().unwrap();
+                    item_handle.set_title("Hide").unwrap();
+                } else {
+                    window.hide().unwrap();
+                    item_handle.set_title("Show").unwrap();
+                }
+            }
+
             SystemTrayEvent::MenuItemClick { id, .. } => {
                 let item_handle = app.tray_handle().get_item(&id);
                 match id.as_str() {
