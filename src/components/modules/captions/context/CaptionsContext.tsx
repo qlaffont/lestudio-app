@@ -30,6 +30,15 @@ type ContextReturn = {
   restartRecognition: () => void;
 };
 
+declare global {
+  interface Window {
+    tryToConnectToOBS: () => Promise<void>;
+    startRecognition: () => Promise<void>;
+    obs?: OBSWebSocket;
+    recogition?: SpeechRecognition;
+  }
+}
+
 export const CaptionsProvider = (props: { children: JSX.Element }) => {
   const { manager, socket } = useSocket();
   const { token } = useApp();
@@ -48,64 +57,92 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
   onMount(() => {
     //@ts-ignore
     setIsCompatible('webkitSpeechRecognition' in window);
+
+    // eslint-disable-next-line solid/reactivity
+    window.tryToConnectToOBS = async () => {
+      if (!isConnectedToOBS()) {
+        //Instanciate OBS CLIENT IF INFOS
+        const obs = new OBSWebSocket();
+
+        try {
+          const obsAddress = `ws://${await getOBSAddress()}`;
+          setOBSAddress(obsAddress);
+          await obs.connect(obsAddress, await getOBSPassword());
+          obs.once('ConnectionClosed', () => {
+            setConnectedToOBS(false);
+            window.tryToConnectToOBS();
+          });
+          window.obs = obs;
+          setConnectedToOBS(true);
+        } catch (error) {
+          setConnectedToOBS(false);
+          // TODO to refactor
+          // if (pathname() === '/captions') {
+          //   // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          //   toast.error(`Failed to connect to OBS, ${error.code}, ${error.message}`);
+          //   console.error(error);
+          // }
+
+          setTimeout(() => {
+            window.tryToConnectToOBS();
+          }, 10000);
+        }
+      }
+    };
+
+    window.startRecognition = async () => {
+      if (isCompatible()) {
+        const newRecognition = new webkitSpeechRecognition();
+        newRecognition.interimResults = true;
+        newRecognition.continuous = true;
+        newRecognition.lang = await getCaptionsLanguage();
+
+        newRecognition.onresult = async function (event) {
+          const index = Object.keys(event.results).length;
+          const result = event.results[index - 1];
+          //@ts-ignore
+          const haveResultFinal = result.isFinal;
+
+          const text = result['0'].transcript.trim();
+
+          if (haveResultFinal) {
+            // TODO Translate if needed
+          }
+          setLastText(text);
+
+          if (obs) {
+            try {
+              await obs.call('SendStreamCaption', { captionText: text });
+              // eslint-disable-next-line no-empty
+            } catch (error) {}
+          }
+
+          socket().emit('web-speech-user', {
+            userToken: token(),
+            content: text,
+          });
+        };
+
+        newRecognition.onend = function () {
+          setRecognition(undefined);
+        };
+
+        newRecognition.start();
+        setRecognition(newRecognition);
+      }
+    };
   });
 
   createEffect(() => {
     if (isCompatible()) {
-      tryToConnectToOBS();
-    }
-  });
-
-  const recognitionData = createMemo(() => ({
-    isCompatible: isCompatible(),
-    obs: obs(),
-  }));
-
-  const [, { refetch }] = createResource(recognitionData, async ({ isCompatible, obs }) => {
-    if (isCompatible) {
-      const newRecognition = new webkitSpeechRecognition();
-      newRecognition.interimResults = true;
-      newRecognition.continuous = true;
-      newRecognition.lang = await getCaptionsLanguage();
-
-      newRecognition.onresult = async function (event) {
-        const index = Object.keys(event.results).length;
-        const result = event.results[index - 1];
-        //@ts-ignore
-        const haveResultFinal = result.isFinal;
-
-        const text = result['0'].transcript.trim();
-
-        if (haveResultFinal) {
-          // TODO Translate if needed
-        }
-        setLastText(text);
-
-        if (obs) {
-          try {
-            await obs.call('SendStreamCaption', { captionText: text });
-            // eslint-disable-next-line no-empty
-          } catch (error) {}
-        }
-
-        socket().emit('web-speech-user', {
-          userToken: token(),
-          content: text,
-        });
-      };
-
-      newRecognition.onend = function () {
-        // console.log('recognition end');
-        setRecognition(undefined);
-      };
-
-      newRecognition.start();
-      setRecognition(newRecognition);
+      window.tryToConnectToOBS();
     }
   });
 
   const restartRecognition = () => {
-    refetch();
+    if (recognition()) {
+      recognition().stop();
+    }
   };
 
   const [, { refetch: tryToConnectToOBS }] = createResource(
