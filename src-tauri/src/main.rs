@@ -67,7 +67,6 @@ fn main() {
 
             // println!("Local folder : {}", get_app_dir());
 
-            window.set_closable(false);
             window.set_maximizable(false);
             window.set_size(Size::Logical(LogicalSize {
                 width: f64::from(window_size.0),
