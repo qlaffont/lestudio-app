@@ -61,11 +61,12 @@ pub async fn get_music_content() -> String {
     const DETACHED_PROCESS: u32 = 0x08000000;
     command.creation_flags(DETACHED_PROCESS);
 
-    let output = command
-        .output()
-        .unwrap_or("null".to_string());
+    if let Ok(output) = command.output(){
+      return String::from_utf8(output.stdout).unwrap_or("null".to_string());
+    }
 
-    return String::from_utf8(output.stdout).unwrap_or("null".to_string());
+    return String::from("null");
+
   }
 
   return String::from("null");
