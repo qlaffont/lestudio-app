@@ -22,12 +22,13 @@ const schema = zod.object({
 export const Captions = () => {
   const { t } = useI18n();
 
-  const { isCompatible, isConnectedToOBS, lastText } = useCaptions();
+  const { isCompatible, isConnectedToOBS, lastText, restartRecognition } = useCaptions();
 
   const { form, setData, errors, data, isValid } = createForm({
     extend: [validator({ schema })],
     onSubmit: async (values: zod.infer<typeof schema>) => {
       await setConfig(values as Partial<Config>);
+      restartRecognition();
       toast.success(t('pages.captions.form.success'));
     },
   });

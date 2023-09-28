@@ -1,7 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/ban-types */
-import { Accessor, JSX, createContext, createEffect, createMemo, createSignal, onMount, useContext } from 'solid-js';
+import {
+  Accessor,
+  JSX,
+  createContext,
+  createEffect,
+  createMemo,
+  createResource,
+  createSignal,
+  onMount,
+  useContext,
+} from 'solid-js';
 import OBSWebSocket from 'obs-websocket-js';
 import { getCaptionsLanguage, getOBSAddress, getOBSPassword } from '../../../../tauri';
 import { useSocket } from '../../../../services/useSocket';
@@ -17,6 +27,7 @@ type ContextReturn = {
   lastText: Accessor<string>;
   isConnectedToOBS: Accessor<boolean>;
   obsAddress: Accessor<string>;
+  restartRecognition: () => void;
 };
 
 export const CaptionsProvider = (props: { children: JSX.Element }) => {
@@ -37,22 +48,21 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
   onMount(() => {
     //@ts-ignore
     setIsCompatible('webkitSpeechRecognition' in window);
-
-    startRecognition();
   });
 
   createEffect(() => {
-    if (!isConnectedToOBS() && isCompatible()) {
+    if (isCompatible()) {
       tryToConnectToOBS();
     }
   });
 
-  const startRecognition = async () => {
-    if (isCompatible()) {
-      if (recognition()) {
-        recognition().stop();
-      }
+  const recognitionData = createMemo(() => ({
+    isCompatible: isCompatible(),
+    obs: obs(),
+  }));
 
+  const [, { refetch }] = createResource(recognitionData, async ({ isCompatible, obs }) => {
+    if (isCompatible) {
       const newRecognition = new webkitSpeechRecognition();
       newRecognition.interimResults = true;
       newRecognition.continuous = true;
@@ -71,9 +81,9 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
         }
         setLastText(text);
 
-        if (obs()) {
+        if (obs) {
           try {
-            await obs().call('SendStreamCaption', { captionText: text });
+            await obs.call('SendStreamCaption', { captionText: text });
             // eslint-disable-next-line no-empty
           } catch (error) {}
         }
@@ -85,43 +95,53 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
       };
 
       newRecognition.onend = function () {
-        startRecognition();
+        // console.log('recognition end');
+        setRecognition(undefined);
       };
 
       newRecognition.start();
       setRecognition(newRecognition);
     }
+  });
+
+  const restartRecognition = () => {
+    refetch();
   };
 
-  const tryToConnectToOBS = async () => {
-    if (!isConnectedToOBS()) {
-      //Instanciate OBS CLIENT IF INFOS
-      const obs = new OBSWebSocket();
+  const [, { refetch: tryToConnectToOBS }] = createResource(
+    () => true,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    async (_) => {
+      // console.log('try to connect to OBS', isConnectedToOBS());
+      if (!isConnectedToOBS()) {
+        //Instanciate OBS CLIENT IF INFOS
+        const obs = new OBSWebSocket();
 
-      try {
-        const obsAddress = `ws://${await getOBSAddress()}`;
-        setOBSAddress(obsAddress);
-        obs.once('ConnectionClosed', () => {
+        try {
+          const obsAddress = `ws://${await getOBSAddress()}`;
+          setOBSAddress(obsAddress);
+          await obs.connect(obsAddress, await getOBSPassword());
+          obs.once('ConnectionClosed', () => {
+            setConnectedToOBS(false);
+            tryToConnectToOBS();
+          });
+          setOBS(obs);
+          setConnectedToOBS(true);
+        } catch (error) {
           setConnectedToOBS(false);
-          tryToConnectToOBS();
-        });
-        await obs.connect(obsAddress, await getOBSPassword());
-        setOBS(obs);
-        setConnectedToOBS(true);
-      } catch (error) {
-        setConnectedToOBS(false);
-        if (pathname() === '/captions') {
-          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          toast.error(`Failed to connect to OBS, ${error.code}, ${error.message}`);
-          console.error(error);
-        }
+          if (pathname() === '/captions') {
+            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+            toast.error(`Failed to connect to OBS, ${error.code}, ${error.message}`);
+            console.error(error);
+          }
 
-        setTimeout(() => {
-          tryToConnectToOBS();
-        }, 10000);
+          setTimeout(() => {
+            tryToConnectToOBS();
+          }, 10000);
+        }
       }
-    }
-  };
+    },
+  );
 
   createEffect(() => {
     if (token() && manager() && socket()) {
@@ -139,7 +159,9 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return (
-    <CaptionsContext.Provider value={{ isCompatible, lastText, isConnectedToOBS, obsAddress } satisfies ContextReturn}>
+    <CaptionsContext.Provider
+      value={{ isCompatible, lastText, isConnectedToOBS, obsAddress, restartRecognition } satisfies ContextReturn}
+    >
       {props.children}
     </CaptionsContext.Provider>
   );
