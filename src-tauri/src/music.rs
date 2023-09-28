@@ -63,7 +63,7 @@ pub async fn get_music_content() -> String {
 
     let output = command
         .output()
-        .expect("null");
+        .unwrap_or("null".to_string());
 
     return String::from_utf8(output.stdout).unwrap_or("null".to_string());
   }
