@@ -52,14 +52,14 @@ export const Captions = () => {
       {!isCompatible() && <p class="text-red-500 font-bold text-center text-md">{t('pages.captions.incompatible')}</p>}
 
       <h2>
-        <span class="font-bold">{t('pages.captions.OBSConnection')} </span>
+        <span class="font-bold text-white">{t('pages.captions.OBSConnection')} </span>
         {isConnectedToOBS() && <span class="text-green-500">{t('pages.captions.connected')}</span>}
         {!isConnectedToOBS() && <span class="text-red-500">{t('pages.captions.notConnected')}</span>}
       </h2>
 
       <div>
-        <h2 class="font-bold">{t('pages.captions.lastText')}</h2>
-        <p class="line-clamp-2 h-[48px]">{lastText()}</p>
+        <h2 class="font-bold text-white">{t('pages.captions.lastText')}</h2>
+        <p class="line-clamp-2 h-[48px] text-white">{lastText()}</p>
       </div>
 
       <form use:form>

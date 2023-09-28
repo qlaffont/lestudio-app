@@ -74,7 +74,7 @@ export const Settings = () => {
 
         <div class="form-control w-[250px] pt-12">
           <label class="cursor-pointer label">
-            <span class="label-text">{t('pages.settings.startOnBoot')}</span>
+            <span class="label-text text-white">{t('pages.settings.startOnBoot')}</span>
             <input
               type="checkbox"
               class="toggle toggle-accent"
@@ -88,7 +88,7 @@ export const Settings = () => {
       </div>
 
       <div>
-        <p class="text-xs italic  text-center">{t('pages.settings.close')}</p>
+        <p class="text-xs italic text-center text-white">{t('pages.settings.close')}</p>
       </div>
 
       <div class="text-center text-xm opacity-60 text-white pt-20">

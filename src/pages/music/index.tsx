@@ -30,7 +30,7 @@ export const Music = () => {
         <div>
           <p
             class={cx(
-              music()?.currentSongIsPlaying ? 'text-green-500' : '',
+              music()?.currentSongIsPlaying ? 'text-green-500' : 'text-white',
               'font-bold line-clamp-1',
               music()?.currentSongTitle !== null ? 'pb-3' : '',
             )}
@@ -41,9 +41,9 @@ export const Music = () => {
               t('pages.music.notDetected')}
           </p>
 
-          <p class="line-clamp-1">{music()?.currentSongTitle}</p>
-          <p class="font-medium line-clamp-1">{music()?.currentSongAuthor}</p>
-          <p class="italic line-clamp-1">{music()?.currentSongAlbum}</p>
+          <p class="line-clamp-1 text-white">{music()?.currentSongTitle}</p>
+          <p class="font-medium line-clamp-1 text-white">{music()?.currentSongAuthor}</p>
+          <p class="italic line-clamp-1 text-white">{music()?.currentSongAlbum}</p>
         </div>
       </div>
     </div>

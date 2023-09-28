@@ -44,7 +44,7 @@ export const Button = (_props: {
   return (
     <button
       class={cx(
-        'flex items-center justify-center gap-2',
+        'flex items-center justify-center gap-2 text-white',
         'rounded-md',
         'hover:opacity-60',
         props.disabled ? '!opacity-30' : '',
@@ -65,7 +65,7 @@ export const Button = (_props: {
         </div>
       )}
 
-      {props.children && <div>{props.children}</div>}
+      {props.children && <div class="text-white">{props.children}</div>}
 
       {props.suffixIcon && (
         <div onClick={props.onClickSuffix}>

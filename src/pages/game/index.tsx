@@ -141,11 +141,11 @@ export const Game = () => {
         </div>
 
         <div>
-          <p class="font-medium line-clamp-1">
+          <p class="font-medium line-clamp-1 text-white">
             {detectedGame()?.processName ? query.data?.data?.getTwitchGameFromId?.name : t('pages.game.noDetected')}
           </p>
-          <p class="italic text-md line-clamp-1">{detectedGame()?.processName?.toLowerCase()}</p>
-          <p class="italic text-sm line-clamp-1">{detectedGame()?.twitchCategoryId}</p>
+          <p class="italic text-md line-clamp-1 text-white">{detectedGame()?.processName?.toLowerCase()}</p>
+          <p class="italic text-sm line-clamp-1 text-white">{detectedGame()?.twitchCategoryId}</p>
         </div>
       </div>
 
