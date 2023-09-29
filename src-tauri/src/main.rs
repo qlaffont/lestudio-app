@@ -45,12 +45,6 @@ fn main() {
 
     let system_tray = SystemTray::new().with_menu(tray_menu);
 
-    let mut window_size: (i32, i32) = (0,0);
-
-    task::block_on(async {
-        window_size = commands::get_window_size().await.unwrap_or((400, 600));
-    });
-
     tauri::Builder::default()
         .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
             let window = app.get_window("main").unwrap();
@@ -61,6 +55,7 @@ fn main() {
             MacosLauncher::LaunchAgent,
             Some(vec![]),
         ))
+        .plugin(tauri_plugin_window_state::Builder::default().build())
         .system_tray(system_tray)
         .setup(move |app: &mut tauri::App| {
             let window = app.get_window("main").unwrap();
@@ -68,10 +63,6 @@ fn main() {
             // println!("Local folder : {}", get_app_dir());
 
             window.set_maximizable(false);
-            window.set_size(Size::Logical(LogicalSize {
-                width: f64::from(window_size.0),
-                height: f64::from(window_size.1),
-            }));
 
             if is_autostart_enabled {
                 window.hide();

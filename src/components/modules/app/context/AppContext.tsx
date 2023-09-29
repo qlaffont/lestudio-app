@@ -14,7 +14,6 @@ import {
   getConfig,
   getVersion,
   getSystem,
-  onResize,
 } from '../../../../tauri';
 import { useI18n } from '../../../../lang/useI18n';
 
@@ -65,8 +64,6 @@ export const AppProvider = (props: { children: JSX.Element }) => {
     });
 
     onToggleAutoStart();
-
-    onResize();
   });
 
   return (

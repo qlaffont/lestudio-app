@@ -20,9 +20,10 @@ tauri = { version = "1.4", features = [ "updater", "system-tray", "api-all", "de
 directories = "5.0"
 reqwest = "0.11"
 sysinfo="0.29.10"
-tauri-plugin-autostart = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 async-std = {version = "1.9", features = ["attributes", "tokio1"] }
+tauri-plugin-autostart = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+tauri-plugin-window-state = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 
 
 [features]

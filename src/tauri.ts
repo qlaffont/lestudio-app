@@ -147,13 +147,3 @@ export const onDetectedGame = async (callback: (game: GameData) => void) => {
     callback(data);
   });
 };
-
-export const onResize = async () => {
-  const debounceFunction = debounce((s: { width: string; height: string }) => {
-    setConfig({ width: s.width.toString(), height: s.height.toString() });
-  }, 1000);
-
-  await appWindow.onResized(({ payload: size }) => {
-    debounceFunction(size);
-  });
-};
