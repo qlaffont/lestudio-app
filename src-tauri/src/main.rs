@@ -4,7 +4,7 @@
 )]
 
 use std::thread;
-use tauri::{LogicalSize, Manager, Size, UserAttentionType};
+use tauri::{Event, LogicalSize, Manager, RunEvent, Size, UserAttentionType};
 mod commands;
 mod filepath;
 #[cfg_attr(target_os = "windows", path = "music.rs")]
@@ -60,6 +60,11 @@ fn main() {
         .setup(move |app: &mut tauri::App| {
             let window = app.get_window("main").unwrap();
 
+            window.set_min_size(Some(Size::Logical(LogicalSize {
+                width: 200.0,
+                height: 200.0,
+            })));
+
             // println!("Local folder : {}", get_app_dir());
 
             window.set_maximizable(false);
@@ -94,9 +99,7 @@ fn main() {
             commands::add_game_to_list,
         ])
         .on_system_tray_event(|app, event| match event {
-            SystemTrayEvent::LeftClick {
-                ..
-            } => {
+            SystemTrayEvent::LeftClick { .. } => {
                 let window = app.get_window("main").unwrap();
                 let item_handle = app.tray_handle().get_item("hide");
                 if !(window.is_visible().unwrap()) {
@@ -133,6 +136,28 @@ fn main() {
             }
             _ => {}
         })
-        .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+        .build(tauri::generate_context!())
+        .expect("error while building tauri application")
+        .run(|app, event| match event {
+            tauri::RunEvent::WindowEvent {
+                label,
+                event: win_event,
+                ..
+            } => match win_event {
+                tauri::WindowEvent::CloseRequested { api, .. } => {
+                    let window = app.get_window(label.as_str()).unwrap();
+                    api.prevent_close();
+                    let item_handle = app.tray_handle().get_item("hide");
+                    if !(window.is_visible().unwrap()) {
+                        window.show().unwrap();
+                        item_handle.set_title("Hide").unwrap();
+                    } else {
+                        window.hide().unwrap();
+                        item_handle.set_title("Show").unwrap();
+                    }
+                }
+                _ => {}
+            },
+            _ => {}
+        })
 }
