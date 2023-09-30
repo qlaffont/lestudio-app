@@ -117,7 +117,8 @@ export const Game = () => {
     },
   });
 
-  const processesOptions = createOptions(Array.from(new Set(processes() || [])));
+  const processData = createMemo(() => Array.from(new Set(processes() || [])));
+  const processesOptions = createOptions(processData);
   const asyncTwitchCategoryOptions = createAsyncOptions(
     async (inputValue) => await fetchGameResults(inputValue, token()),
   );
