@@ -1,9 +1,15 @@
+import { API_BASE } from '../env';
+
 export const fetchGameResults = async (inputValue: string, token: string) => {
   if (!token || inputValue?.length === 0) {
     return [];
   }
 
-  const res = await fetch(`https://api.lestudio.qlaffont.com/twitch/games?search=${inputValue}&token=${token}`, {
+  const url = new URL(`/twitch/games`, API_BASE);
+  url.searchParams.append('search', inputValue);
+  url.searchParams.append('token', token);
+
+  const res = await fetch(url.toString(), {
     cache: 'reload',
   });
 

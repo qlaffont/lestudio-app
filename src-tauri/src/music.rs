@@ -5,6 +5,7 @@ use std::{fs, process::Command, collections::HashMap};
 use std::fs::File;
 use std::io::Write;
 use crate::filepath::{get_app_dir, get_music_exe_path};
+use crate::config::get_api_base;
 use std::os::windows::process::CommandExt;
 
 const MUSIC_CHANNEL: &str = "music";
@@ -86,7 +87,7 @@ pub async fn periodically_send_process_music(window: &tauri::Window) {
         song_data = music_content.clone();
 
         // Update DB if token is provided
-        let url: String = "https://api.lestudio.qlaffont.com/users/current-song?id=".to_string() + &token;
+        let url: String = get_api_base() + "/users/current-song?id=" + &token;
 
         let parsed_musiq_data: Result<MusicData, _> = serde_json::from_str(&music_content);
 

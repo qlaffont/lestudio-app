@@ -3,7 +3,7 @@ use std::fs;
 use serde::{Serialize, Deserialize};
 use sysinfo::{ProcessExt, System, SystemExt};
 
-use crate::{filepath::{get_game_list_path, get_local_game_list_path}, commands::{update_games_list, get_token, get_default_action}};
+use crate::{filepath::{get_game_list_path, get_local_game_list_path}, commands::{update_games_list, get_token, get_default_action}, config::get_api_base};
 
 const PROCESS_LIST_CHANNEL: &str = "process-list";
 const DETECTED_GAME_CHANNEL: &str = "detected-game";
@@ -97,7 +97,7 @@ pub async fn periodically_send_process_list(window: &tauri::Window) {
       last_detected_process_name = detected_game.clone();
 
       let client = reqwest::Client::new();
-      let url = "https://api.lestudio.qlaffont.com/twitch/games?twitchCategoryId=".to_string();
+      let url: String = get_api_base() + "/twitch/games?twitchCategoryId=";
 
       let token = get_token().await.unwrap();
 

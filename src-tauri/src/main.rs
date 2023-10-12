@@ -4,13 +4,14 @@
 )]
 
 use std::thread;
-use tauri::{Event, LogicalSize, Manager, RunEvent, Size, UserAttentionType};
+use tauri::{LogicalSize, Manager, Size, UserAttentionType};
 mod commands;
 mod filepath;
 #[cfg_attr(target_os = "windows", path = "music.rs")]
 #[cfg_attr(not(target_os = "windows"), path = "music_other.rs")]
 mod music;
 mod process_list;
+mod config;
 use async_std::task;
 use tauri::{CustomMenuItem, SystemTray, SystemTrayEvent, SystemTrayMenu, SystemTrayMenuItem};
 use tauri_plugin_autostart::MacosLauncher;

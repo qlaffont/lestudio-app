@@ -1,3 +1,5 @@
+import { API_BASE } from '../env';
+
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 export const fetcher = ({
   method,
@@ -14,7 +16,7 @@ export const fetcher = ({
 
     allHeaders['Content-Type'] = `application/json`;
 
-    const res = await fetch(`https://api.lestudio.qlaffont.com${url}`, {
+    const res = await fetch(`${API_BASE}${url}`, {
       method,
       headers: allHeaders,
       body,

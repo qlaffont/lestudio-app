@@ -12,6 +12,7 @@ import { createForm } from '@felte/solid';
 import { Button } from '../../components/atoms/Button';
 import toast from 'solid-toast';
 import { fetchGameResults } from '../../services/api/fetchGameResults';
+import { API_BASE } from '../../services/env';
 
 const addGameSchema = zod.object({
   twitchCategoryId: zod.string().min(1),
@@ -68,7 +69,7 @@ export const Game = () => {
       await addGameToLocaleGameList({ twitchCategoryId: values.twitchCategoryId, processName: values.processName });
 
       try {
-        const url = new URL('/twitch/games', 'https://api.lestudio.qlaffont.com');
+        const url = new URL('/twitch/games', API_BASE);
         url.searchParams.append('token', token());
 
         let system;
