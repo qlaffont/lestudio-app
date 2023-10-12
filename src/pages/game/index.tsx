@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/indent */
 import { useI18n } from '../../lang/useI18n';
 import { useApp } from '../../components/modules/app/context/AppContext';
@@ -14,24 +11,12 @@ import { validator } from '@felte/validator-zod';
 import { createForm } from '@felte/solid';
 import { Button } from '../../components/atoms/Button';
 import toast from 'solid-toast';
+import { fetchGameResults } from '../../services/api/fetchGameResults';
 
 const addGameSchema = zod.object({
   twitchCategoryId: zod.string().min(1),
   processName: zod.string().min(1),
 });
-
-const fetchGameResults = async (inputValue: string, token: string) => {
-  if (!token || inputValue?.length === 0) {
-    return [];
-  }
-
-  const res = await fetch(`https://api.lestudio.qlaffont.com/twitch/games?search=${inputValue}&token=${token}`, {
-    cache: 'reload',
-  });
-
-  const games = (await res.json()).data.getTwitchGames;
-  return games?.map((v) => ({ value: v.id, label: v.name, disabled: false }));
-};
 
 export const Game = () => {
   const { t } = useI18n();
@@ -110,7 +95,6 @@ export const Game = () => {
         await fetch(url.toString(), { method: 'PUT' });
         toast.success(t('pages.game.addGame.form.success'));
         reset();
-        // eslint-disable-next-line no-empty
       } catch (error) {
         toast.error(t('pages.game.addGame.form.error'));
       }

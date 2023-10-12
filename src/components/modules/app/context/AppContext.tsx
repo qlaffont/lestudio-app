@@ -19,6 +19,19 @@ import { useI18n } from '../../../../lang/useI18n';
 
 export const AppContext = createContext();
 
+type ContextReturn = {
+  music: Accessor<MusicData>;
+  processes: Accessor<string[]>;
+  detectedGame: Accessor<GameData>;
+  token: Accessor<string>;
+  system: Accessor<string>;
+  version: Accessor<string>;
+  setMusic: Setter<MusicData>;
+  setProcesses: Setter<string[]>;
+  setDetectedGame: Setter<GameData>;
+  setToken: Setter<string>;
+};
+
 export const AppProvider = (props: { children: JSX.Element }) => {
   const { t } = useI18n();
   const [music, setMusic] = createSignal<MusicData>(null);
@@ -68,34 +81,24 @@ export const AppProvider = (props: { children: JSX.Element }) => {
 
   return (
     <AppContext.Provider
-      value={{
-        music,
-        processes,
-        detectedGame,
-        token,
-        setMusic,
-        setProcesses,
-        setDetectedGame,
-        setToken,
-        version,
-        system,
-      }}
+      value={
+        {
+          music,
+          processes,
+          detectedGame,
+          token,
+          setMusic,
+          setProcesses,
+          setDetectedGame,
+          setToken,
+          version,
+          system,
+        } as ContextReturn
+      }
     >
       {props.children}
     </AppContext.Provider>
   );
 };
 
-export const useApp = () =>
-  useContext(AppContext) as {
-    music: Accessor<MusicData>;
-    processes: Accessor<string[]>;
-    detectedGame: Accessor<GameData>;
-    token: Accessor<string>;
-    system: Accessor<string>;
-    version: Accessor<string>;
-    setMusic: Setter<MusicData>;
-    setProcesses: Setter<string[]>;
-    setDetectedGame: Setter<GameData[]>;
-    setToken: Setter<string>;
-  };
+export const useApp = () => useContext(AppContext) as ContextReturn;

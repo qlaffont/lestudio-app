@@ -2,8 +2,6 @@
 import { listen } from '@tauri-apps/api/event';
 import { invoke } from '@tauri-apps/api/tauri';
 import { disable, enable } from 'tauri-plugin-autostart-api';
-import { appWindow } from '@tauri-apps/api/window';
-import debounce from 'lodash/debounce';
 
 export type Config = {
   token?: string;
