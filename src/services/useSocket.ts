@@ -1,15 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Manager, Socket } from 'socket.io-client';
 import { createEffect, createSignal } from 'solid-js';
-
-const base = `https://api.lestudio.qlaffont.com`;
+import { API_BASE } from './env';
 
 export const useSocket = () => {
   const [socket, setSocket] = createSignal<Socket | undefined>();
   const [manager, setManager] = createSignal<Manager>();
 
   createEffect(() => {
-    const manager: Manager = new Manager(base, {
+    const manager: Manager = new Manager(API_BASE, {
       reconnectionDelayMax: 500,
       reconnectionDelay: 500,
       transports: ['websocket'],
