@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable @typescript-eslint/ban-types */
 import { Accessor, JSX, createContext, createEffect, createMemo, createSignal, onMount, useContext } from 'solid-js';
 import OBSWebSocket from 'obs-websocket-js';
 import { getCaptionsLanguage, getOBSAddress, getOBSPassword } from '../../../../tauri';
@@ -8,8 +5,6 @@ import { useSocket } from '../../../../services/useSocket';
 import { useApp } from '../../app/context/AppContext';
 import toast from 'solid-toast';
 import { useLocation } from '@solidjs/router';
-// import toast from 'solid-toast';
-import debounce from 'lodash/debounce';
 
 export const CaptionsContext = createContext();
 
@@ -67,7 +62,7 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
           setConnectedToOBS(true);
         } catch (error) {
           setConnectedToOBS(false);
-          // TODO to refactor
+
           if (pathname() === '/captions') {
             // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
             toast.error(`Failed to connect to OBS, ${error.code}, ${error.message}`);
@@ -81,6 +76,7 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
       }
     };
 
+    // eslint-disable-next-line solid/reactivity
     window.startRecognition = async () => {
       if (isCompatible()) {
         // console.log('recogition start....');
@@ -129,13 +125,10 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
   });
 
   createEffect(() => {
-    //Strange thing rerender 2 times
-    debounce(() => {
-      if (isCompatible()) {
-        window.tryToConnectToOBS();
-        window.startRecognition();
-      }
-    }, 500)();
+    if (isCompatible()) {
+      window.tryToConnectToOBS();
+      window.startRecognition();
+    }
   });
 
   const restartRecognition = () => {
