@@ -74,6 +74,8 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
           await obs.connect(obsAddress, await getOBSPassword(), { eventSubscriptions: EventSubscription.General });
 
           setOBS(obs);
+          //@ts-ignore
+          // eslint-disable-next-line no-empty
         } catch (error) {}
       }
     };
