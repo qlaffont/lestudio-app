@@ -1,5 +1,5 @@
 import { Accessor, JSX, createContext, createEffect, createMemo, createSignal, onMount, useContext } from 'solid-js';
-import OBSWebSocket from 'obs-websocket-js';
+import OBSWebSocket, { EventSubscription } from 'obs-websocket-js';
 import { getCaptionsLanguage, getOBSAddress, getOBSPassword } from '../../../../tauri';
 import { useSocket } from '../../../../services/useSocket';
 import { useApp } from '../../app/context/AppContext';
@@ -41,7 +41,7 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
 
   onMount(() => {
     //@ts-ignore
-    setIsCompatible('webkitSpeechRecognition' in window);
+    setIsCompatible(true || 'webkitSpeechRecognition' in window);
 
     // eslint-disable-next-line solid/reactivity
     window.tryToConnectToOBS = async () => {
@@ -53,26 +53,28 @@ export const CaptionsProvider = (props: { children: JSX.Element }) => {
         try {
           const obsAddress = `ws://${await getOBSAddress()}`;
           setOBSAddress(obsAddress);
-          await obs.connect(obsAddress, await getOBSPassword());
-          obs.once('ConnectionClosed', () => {
-            setConnectedToOBS(false);
-            window.tryToConnectToOBS();
+
+          obs.once('ConnectionOpened', () => {
+            setConnectedToOBS(true);
           });
+          obs.once('ConnectionClosed', (error) => {
+            setConnectedToOBS(false);
+
+            if (pathname() === '/captions') {
+              // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+              toast.error(`Failed to connect to OBS, ${error.code}, ${error.message}`);
+              console.error(error);
+            }
+
+            setTimeout(() => {
+              window.tryToConnectToOBS();
+            }, 10000);
+          });
+
+          await obs.connect(obsAddress, await getOBSPassword(), { eventSubscriptions: EventSubscription.General });
+
           setOBS(obs);
-          setConnectedToOBS(true);
-        } catch (error) {
-          setConnectedToOBS(false);
-
-          if (pathname() === '/captions') {
-            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-            toast.error(`Failed to connect to OBS, ${error.code}, ${error.message}`);
-            console.error(error);
-          }
-
-          setTimeout(() => {
-            window.tryToConnectToOBS();
-          }, 10000);
-        }
+        } catch (error) {}
       }
     };
 
