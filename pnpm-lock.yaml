@@ -30,8 +30,8 @@ dependencies:
     specifier: ^0.14.0
     version: 0.14.0(solid-js@1.7.11)
   '@types/dom-speech-recognition':
-    specifier: ^0.0.2
-    version: 0.0.2
+    specifier: ^0.0.4
+    version: 0.0.4
   classix:
     specifier: ^2.1.36
     version: 2.1.36
@@ -1013,8 +1013,8 @@ packages:
       '@babel/types': 7.23.9
     dev: true
 
-  /@types/dom-speech-recognition@0.0.2:
-    resolution: {integrity: sha512-GZbxBsBYBMAbpPDYg64KhAr/V8MbrlsNqrjnZJGikLdNqlQbTu+u548jg7c31ZI30/vXAX+v31t/aDr4soiBEg==}
+  /@types/dom-speech-recognition@0.0.4:
+    resolution: {integrity: sha512-zf2GwV/G6TdaLwpLDcGTIkHnXf8JEf/viMux+khqKQKDa8/8BAUtXXZS563GnvJ4Fg0PBLGAaFf2GekEVSZ6GQ==}
     dev: false
 
   /@types/json-schema@7.0.15:
