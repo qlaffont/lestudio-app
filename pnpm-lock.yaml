@@ -86,8 +86,8 @@ devDependencies:
     specifier: 6.0.1
     version: 6.0.1(postcss@8.4.28)
   cssnano-preset-advanced:
-    specifier: 6.0.1
-    version: 6.0.1(postcss@8.4.28)
+    specifier: 6.0.3
+    version: 6.0.3(postcss@8.4.28)
   daisyui:
     specifier: ^3.9.4
     version: 3.9.4
@@ -1314,6 +1314,22 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
+  /autoprefixer@10.4.17(postcss@8.4.28):
+    resolution: {integrity: sha512-/cpVNRLSfhOtcGflT13P2794gVSgmPgTR+erw5ifnMLZb0UnSlkK4tquLmkd3BhA+nLo5tX8Cu0upUsGKvKbmg==}
+    engines: {node: ^10 || ^12 || >=14}
+    hasBin: true
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      browserslist: 4.22.3
+      caniuse-lite: 1.0.30001587
+      fraction.js: 4.3.7
+      normalize-range: 0.1.2
+      picocolors: 1.0.0
+      postcss: 8.4.28
+      postcss-value-parser: 4.2.0
+    dev: true
+
   /babel-plugin-jsx-dom-expressions@0.37.16(@babel/core@7.23.9):
     resolution: {integrity: sha512-ItMD16axbk+FqVb9vIbc7AOpNowy46VaSUHaMYPn+erPGpMCxsahQ1Iv+qhPMthjxtn5ROVMZ5AJtQvzjxjiNA==}
     peerDependencies:
@@ -1548,13 +1564,13 @@ packages:
     hasBin: true
     dev: true
 
-  /cssnano-preset-advanced@6.0.1(postcss@8.4.28):
-    resolution: {integrity: sha512-z50X9tDqiZx0Cv+vi3/IRe+5ca1lLLvoG67PjwWdC6gXNqc7JXbU/hWEfYQg+e9/8cq+fVKhyLHO8n3mV7mxDw==}
+  /cssnano-preset-advanced@6.0.3(postcss@8.4.28):
+    resolution: {integrity: sha512-+DIOR5FFId+nb6/JcBkAMiXYDadEx2waDmSDhAA3rL1Q1N1AaZP0N25jiZnqLp3MdWnRg9t9CNaDs/OdB/lpPg==}
     engines: {node: ^14 || ^16 || >=18.0}
     peerDependencies:
-      postcss: ^8.2.15
+      postcss: ^8.4.31
     dependencies:
-      autoprefixer: 10.4.15(postcss@8.4.28)
+      autoprefixer: 10.4.17(postcss@8.4.28)
       cssnano-preset-default: 6.0.3(postcss@8.4.28)
       postcss: 8.4.28
       postcss-discard-unused: 6.0.2(postcss@8.4.28)
