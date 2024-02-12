@@ -1,5 +1,5 @@
 import { type Component } from 'solid-js';
-import { Router, hashIntegration } from '@solidjs/router';
+import { HashRouter } from '@solidjs/router';
 import { AppRoutes } from './pages';
 import { AppLayout } from './components/layout/AppLayout';
 import { enGB } from 'date-fns/locale';
@@ -20,7 +20,7 @@ const App: Component = () => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <Router source={hashIntegration()}>
+        <HashRouter>
           <RosettyProvider languages={locales} defaultLanguage={defaultLanguage}>
             <AppProvider>
               <CaptionsProvider>
@@ -31,7 +31,7 @@ const App: Component = () => {
               </CaptionsProvider>
             </AppProvider>
           </RosettyProvider>
-        </Router>
+        </HashRouter>
         {/* To Debug solid query in front */}
         {/* <SolidQueryDevkit /> */}
       </QueryClientProvider>
