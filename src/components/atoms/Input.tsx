@@ -53,7 +53,7 @@ export interface InputProps {
 }
 
 export const Input = (_props: InputProps) => {
-  const { t } = useI18n();
+  const i18n = useI18n();
 
   const [props, otherProps] = splitProps(
     mergeProps(
@@ -168,7 +168,7 @@ export const Input = (_props: InputProps) => {
           class={cx('mt-1 text-sm', isError() ? '!border-error !text-error' : 'text-white text-opacity-80')}
           //@ts-ignore
           // eslint-disable-next-line solid/no-innerhtml
-          innerHTML={translateZodErrorMessage(props.error, t) || props.helperText}
+          innerHTML={translateZodErrorMessage(props.error, i18n().t) || props.helperText}
         />
       )}
     </div>

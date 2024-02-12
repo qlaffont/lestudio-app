@@ -16,15 +16,15 @@ const schema = zod.object({
 });
 
 export const Settings = () => {
-  const { t } = useI18n();
+  const i18n = useI18n();
   const { setToken, version } = useApp();
 
   const { mutate } = useValidToken({
     onSuccess: () => {
-      toast.success(t('pages.settings.form.success'));
+      toast.success(i18n().t('pages.settings.form.success'));
     },
     onError: () => {
-      toast.error(t('pages.settings.form.errorToken'));
+      toast.error(i18n().t('pages.settings.form.errorToken'));
     },
   });
 
@@ -53,26 +53,26 @@ export const Settings = () => {
 
   return (
     <div class="space-y-6">
-      <h1 class="text-2xl font-bold text-white">{t('pages.settings.title')}</h1>
+      <h1 class="text-2xl font-bold text-white">{i18n().t('pages.settings.title')}</h1>
 
       <div>
         <form use:form>
           <div class="space-y-4 max-w-xl">
             <Input
-              label={t('pages.settings.form.userToken')}
+              label={i18n().t('pages.settings.form.userToken')}
               name="token"
               type={isVisible() ? 'text' : 'password'}
               suffixIcon={isVisible() ? 'icon icon-eye-full' : 'icon icon-eye'}
               suffixIconclass="mr-2"
               onClick={() => setIsVisible((v) => !v)}
-              helperText={t('pages.settings.form.helperUserToken')}
+              helperText={i18n().t('pages.settings.form.helperUserToken')}
               error={getError(errors(), 'token')}
               value={data().token}
             />
 
             <div class="m-auto">
               <Button class="btn btn-accent btn-wide m-auto" type="submit">
-                {t('pages.settings.form.action')}
+                {i18n().t('pages.settings.form.action')}
               </Button>
             </div>
           </div>
@@ -80,7 +80,7 @@ export const Settings = () => {
 
         <div class="form-control w-[250px] pt-12">
           <label class="cursor-pointer label">
-            <span class="label-text text-white">{t('pages.settings.startOnBoot')}</span>
+            <span class="label-text text-white">{i18n().t('pages.settings.startOnBoot')}</span>
             <input
               type="checkbox"
               class="toggle toggle-accent"
@@ -94,7 +94,7 @@ export const Settings = () => {
       </div>
 
       <div>
-        <p class="text-xs italic text-center text-white">{t('pages.settings.close')}</p>
+        <p class="text-xs italic text-center text-white">{i18n().t('pages.settings.close')}</p>
       </div>
 
       <div class="text-center text-xm opacity-60 text-white pt-20">

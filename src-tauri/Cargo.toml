@@ -16,11 +16,11 @@ tauri-build = { version = "1.4", features = [] }
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "1.4", features = [ "updater", "system-tray", "api-all", "devtools"] }
+tauri = { version = "1.5", features = [ "updater", "system-tray", "api-all", "devtools"] }
 directories = "5.0"
 reqwest = "0.11"
-sysinfo="0.29.10"
-async-std = {version = "1.9", features = ["attributes", "tokio1"] }
+sysinfo="0.30.5"
+async-std = {version = "1.12", features = ["attributes", "tokio1"] }
 tauri-plugin-autostart = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 tauri-plugin-window-state = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }

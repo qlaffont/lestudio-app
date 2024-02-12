@@ -33,7 +33,7 @@ type ContextReturn = {
 };
 
 export const AppProvider = (props: { children: JSX.Element }) => {
-  const { t } = useI18n();
+  const i18n = useI18n();
   const [music, setMusic] = createSignal<MusicData>(null);
   const [processes, setProcesses] = createSignal<string[]>([]);
   const [detectedGame, setDetectedGame] = createSignal<GameData>({});
@@ -47,9 +47,9 @@ export const AppProvider = (props: { children: JSX.Element }) => {
         (async () => {
           try {
             await updateGamesList();
-            toast.success(t('global.gameList.updated'));
+            toast.success(i18n().t('global.gameList.updated'));
           } catch (error) {
-            toast.error(t('global.gameList.error'));
+            toast.error(i18n().t('global.gameList.error'));
           }
         })(),
         (async () => {

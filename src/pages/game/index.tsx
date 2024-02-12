@@ -20,7 +20,7 @@ const addGameSchema = zod.object({
 });
 
 export const Game = () => {
-  const { t } = useI18n();
+  const i18n = useI18n();
 
   const { detectedGame, processes } = useApp();
   const { token } = useApp();
@@ -41,15 +41,15 @@ export const Game = () => {
   const notFoundOptions = [
     {
       value: 'nothing',
-      label: t('pages.game.notFound.action.donothing'),
+      label: i18n().t('pages.game.notFound.action.donothing'),
     },
     {
       value: 'clear',
-      label: t('pages.game.notFound.action.clear'),
+      label: i18n().t('pages.game.notFound.action.clear'),
     },
     {
       value: 'justchatting',
-      label: t('pages.game.notFound.action.justchatting'),
+      label: i18n().t('pages.game.notFound.action.justchatting'),
     },
   ];
 
@@ -94,10 +94,10 @@ export const Game = () => {
         url.searchParams.append('platform', system);
 
         await fetch(url.toString(), { method: 'PUT' });
-        toast.success(t('pages.game.addGame.form.success'));
+        toast.success(i18n().t('pages.game.addGame.form.success'));
         reset();
       } catch (error) {
-        toast.error(t('pages.game.addGame.form.error'));
+        toast.error(i18n().t('pages.game.addGame.form.error'));
       }
     },
   });
@@ -110,7 +110,7 @@ export const Game = () => {
 
   return (
     <div class="space-y-6">
-      <h1 class="text-2xl font-bold text-white">{t('pages.game.title')}</h1>
+      <h1 class="text-2xl font-bold text-white">{i18n().t('pages.game.title')}</h1>
 
       <div class="flex flex-wrap sm:flex-nowrap justify-center sm:justify-normal gap-5 items-center">
         <div>
@@ -128,7 +128,9 @@ export const Game = () => {
 
         <div>
           <p class="font-medium line-clamp-1 text-white">
-            {detectedGame()?.processName ? query.data?.data?.getTwitchGameFromId?.name : t('pages.game.noDetected')}
+            {detectedGame()?.processName
+              ? query.data?.data?.getTwitchGameFromId?.name
+              : i18n().t('pages.game.noDetected')}
           </p>
           <p class="italic text-md line-clamp-1 text-white">{detectedGame()?.processName?.toLowerCase()}</p>
           <p class="italic text-sm line-clamp-1 text-white">{detectedGame()?.twitchCategoryId}</p>
@@ -136,7 +138,7 @@ export const Game = () => {
       </div>
 
       <div class="space-y-2 max-w-xl">
-        <h2 class="font-bold text-white">{t('pages.game.notFound.title')}</h2>
+        <h2 class="font-bold text-white">{i18n().t('pages.game.notFound.title')}</h2>
 
         <Select
           initialValue={notFoundOptions?.find((v) => v.value === notFoundAction())}
@@ -152,10 +154,10 @@ export const Game = () => {
       </div>
 
       <form use:form class="space-y-3 max-w-xl">
-        <h2 class="font-bold text-white">{t('pages.game.addGame.title')}</h2>
+        <h2 class="font-bold text-white">{i18n().t('pages.game.addGame.title')}</h2>
 
         <div class="space-y-2">
-          <label class="text-white">{t('pages.game.addGame.form.process')}</label>
+          <label class="text-white">{i18n().t('pages.game.addGame.form.process')}</label>
           <Select
             {...processesOptions}
             onChange={(v) => {
@@ -165,7 +167,7 @@ export const Game = () => {
         </div>
 
         <div class="space-y-2">
-          <label class="text-white">{t('pages.game.addGame.form.twitchCategoryId')}</label>
+          <label class="text-white">{i18n().t('pages.game.addGame.form.twitchCategoryId')}</label>
           {/* @ts-ignore */}
           <Select
             {...asyncTwitchCategoryOptions}
@@ -178,7 +180,7 @@ export const Game = () => {
 
         <div class="m-auto">
           <Button class="btn btn-accent btn-wide m-auto" type="submit" disabled={!isValid()}>
-            {t('pages.game.addGame.form.action')}
+            {i18n().t('pages.game.addGame.form.action')}
           </Button>
         </div>
       </form>

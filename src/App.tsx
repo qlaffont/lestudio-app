@@ -2,7 +2,7 @@ import { type Component } from 'solid-js';
 import { Router, hashIntegration } from '@solidjs/router';
 import { AppRoutes } from './pages';
 import { AppLayout } from './components/layout/AppLayout';
-import en from 'dayjs/locale/en';
+import { enGB } from 'date-fns/locale';
 import { RosettyProvider } from 'rosetty-solid';
 import { enI18n } from './lang/en';
 import { Toaster } from 'solid-toast';
@@ -11,7 +11,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/solid-query';
 import { CaptionsProvider } from './components/modules/captions/context/CaptionsContext';
 // import SolidQueryDevkit from 'solid-query-devkit';
 
-const locales = { en: { dict: enI18n, locale: en } };
+const locales = { en: { dict: enI18n, locale: enGB } };
 const defaultLanguage = 'en';
 
 const queryClient = new QueryClient();

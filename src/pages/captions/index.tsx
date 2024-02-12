@@ -20,7 +20,7 @@ const schema = zod.object({
 });
 
 export const Captions = () => {
-  const { t } = useI18n();
+  const i18n = useI18n();
 
   const { isCompatible, isConnectedToOBS, lastText, restartRecognition } = useCaptions();
 
@@ -29,7 +29,7 @@ export const Captions = () => {
     onSubmit: async (values: zod.infer<typeof schema>) => {
       await setConfig(values as Partial<Config>);
       restartRecognition();
-      toast.success(t('pages.captions.form.success'));
+      toast.success(i18n().t('pages.captions.form.success'));
     },
   });
 
@@ -50,33 +50,35 @@ export const Captions = () => {
 
   return (
     <div class="space-y-6">
-      <h1 class="text-2xl font-bold text-white">{t('pages.captions.title')}</h1>
+      <h1 class="text-2xl font-bold text-white">{i18n().t('pages.captions.title')}</h1>
 
-      {!isCompatible() && <p class="text-red-500 font-bold text-center text-md">{t('pages.captions.incompatible')}</p>}
+      {!isCompatible() && (
+        <p class="text-red-500 font-bold text-center text-md">{i18n().t('pages.captions.incompatible')}</p>
+      )}
 
       <h2>
-        <span class="font-bold text-white">{t('pages.captions.OBSConnection')} </span>
-        {isConnectedToOBS() && <span class="text-green-500">{t('pages.captions.connected')}</span>}
-        {!isConnectedToOBS() && <span class="text-red-500">{t('pages.captions.notConnected')}</span>}
+        <span class="font-bold text-white">{i18n().t('pages.captions.OBSConnection')} </span>
+        {isConnectedToOBS() && <span class="text-green-500">{i18n().t('pages.captions.connected')}</span>}
+        {!isConnectedToOBS() && <span class="text-red-500">{i18n().t('pages.captions.notConnected')}</span>}
       </h2>
 
       <div>
-        <h2 class="font-bold text-white">{t('pages.captions.lastText')}</h2>
+        <h2 class="font-bold text-white">{i18n().t('pages.captions.lastText')}</h2>
         <p class="line-clamp-2 h-[48px] text-white">{lastText()}</p>
       </div>
 
       <form use:form>
         <div class="space-y-4 max-w-xl">
           <Input
-            label={t('pages.captions.form.captionsOBSAddress')}
+            label={i18n().t('pages.captions.form.captionsOBSAddress')}
             name="captionsOBSAddress"
-            helperText={t('pages.captions.form.captionsOBSAddressHelper')}
+            helperText={i18n().t('pages.captions.form.captionsOBSAddressHelper')}
             error={getError(errors(), 'captionsOBSAddress')}
             value={data().captionsOBSAddress}
           />
 
           <Input
-            label={t('pages.captions.form.captionsOBSPassword')}
+            label={i18n().t('pages.captions.form.captionsOBSPassword')}
             name="captionsOBSPassword"
             error={getError(errors(), 'captionsOBSPassword')}
             value={data().captionsOBSPassword}
@@ -87,7 +89,7 @@ export const Captions = () => {
           />
 
           <div class="space-y-2">
-            <label class="text-white">{t('pages.captions.form.captionsLanguage')}</label>
+            <label class="text-white">{i18n().t('pages.captions.form.captionsLanguage')}</label>
             <Select
               {...captionsLanguageOptions}
               initialValue={selectLanguageValue()}
@@ -100,7 +102,7 @@ export const Captions = () => {
 
           <div class="m-auto">
             <Button class="btn btn-accent btn-wide m-auto" type="submit" disabled={!isValid()}>
-              {t('pages.captions.form.action')}
+              {i18n().t('pages.captions.form.action')}
             </Button>
           </div>
         </div>

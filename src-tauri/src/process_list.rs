@@ -1,7 +1,7 @@
 use std::fs;
 
 use serde::{Serialize, Deserialize};
-use sysinfo::{ProcessExt, System, SystemExt};
+use sysinfo::System;
 
 use crate::{filepath::{get_game_list_path, get_local_game_list_path}, commands::{update_games_list, get_token, get_default_action}, config::get_api_base};
 

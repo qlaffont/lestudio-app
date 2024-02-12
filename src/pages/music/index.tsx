@@ -3,16 +3,16 @@ import { useI18n } from '../../lang/useI18n';
 import { useApp } from '../../components/modules/app/context/AppContext';
 
 export const Music = () => {
-  const { t } = useI18n();
+  const i18n = useI18n();
 
   const { music, system } = useApp();
 
   return (
     <div class="space-y-6">
-      <h1 class="text-2xl font-bold text-white">{t('pages.music.title')}</h1>
+      <h1 class="text-2xl font-bold text-white">{i18n().t('pages.music.title')}</h1>
 
       {system() !== 'windows' && (
-        <p class="text-red-500 font-bold text-center text-md">{t('pages.music.incompatible')}</p>
+        <p class="text-red-500 font-bold text-center text-md">{i18n().t('pages.music.incompatible')}</p>
       )}
 
       <div class="flex flex-wrap sm:flex-nowrap justify-center sm:justify-normal gap-5 items-center">
@@ -35,10 +35,10 @@ export const Music = () => {
               music()?.currentSongTitle !== null ? 'pb-3' : '',
             )}
           >
-            {music()?.currentSongIsPlaying && t('pages.music.isPlaying')}
-            {!music()?.currentSongIsPlaying && music()?.currentSongTitle !== null && t('pages.music.notPlaying')}
+            {music()?.currentSongIsPlaying && i18n().t('pages.music.isPlaying')}
+            {!music()?.currentSongIsPlaying && music()?.currentSongTitle !== null && i18n().t('pages.music.notPlaying')}
             {(music === null || (!music()?.currentSongIsPlaying && music()?.currentSongTitle === null)) &&
-              t('pages.music.notDetected')}
+              i18n().t('pages.music.notDetected')}
           </p>
 
           <p class="line-clamp-1 text-white">{music()?.currentSongTitle}</p>
