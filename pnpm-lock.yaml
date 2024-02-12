@@ -83,8 +83,8 @@ devDependencies:
     specifier: 10.4.15
     version: 10.4.15(postcss@8.4.28)
   cssnano:
-    specifier: 6.0.1
-    version: 6.0.1(postcss@8.4.28)
+    specifier: 6.0.3
+    version: 6.0.3(postcss@8.4.28)
   cssnano-preset-advanced:
     specifier: 6.0.1
     version: 6.0.1(postcss@8.4.28)
@@ -1610,14 +1610,14 @@ packages:
       postcss: 8.4.28
     dev: true
 
-  /cssnano@6.0.1(postcss@8.4.28):
-    resolution: {integrity: sha512-fVO1JdJ0LSdIGJq68eIxOqFpIJrZqXUsBt8fkrBcztCQqAjQD51OhZp7tc0ImcbwXD4k7ny84QTV90nZhmqbkg==}
+  /cssnano@6.0.3(postcss@8.4.28):
+    resolution: {integrity: sha512-MRq4CIj8pnyZpcI2qs6wswoYoDD1t0aL28n+41c1Ukcpm56m1h6mCexIHBGjfZfnTqtGSSCP4/fB1ovxgjBOiw==}
     engines: {node: ^14 || ^16 || >=18.0}
     peerDependencies:
-      postcss: ^8.2.15
+      postcss: ^8.4.31
     dependencies:
       cssnano-preset-default: 6.0.3(postcss@8.4.28)
-      lilconfig: 2.1.0
+      lilconfig: 3.0.0
       postcss: 8.4.28
     dev: true
 
