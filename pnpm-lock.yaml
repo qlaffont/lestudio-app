@@ -7,19 +7,19 @@ settings:
 dependencies:
   '@felte/reporter-solid':
     specifier: ^1.2.10
-    version: 1.2.10(solid-js@1.8.14)
+    version: 1.2.10(solid-js@1.8.15)
   '@felte/solid':
     specifier: ^1.2.13
-    version: 1.2.13(solid-js@1.8.14)
+    version: 1.2.13(solid-js@1.8.15)
   '@felte/validator-zod':
     specifier: ^1.0.17
     version: 1.0.17(zod@3.22.4)
   '@solidjs/router':
     specifier: ^0.12.0
-    version: 0.12.0(solid-js@1.8.14)
+    version: 0.12.0(solid-js@1.8.15)
   '@tanstack/solid-query':
     specifier: ^5.20.1
-    version: 5.20.1(solid-js@1.8.14)
+    version: 5.20.1(solid-js@1.8.15)
   '@tauri-apps/api':
     specifier: 1.5.3
     version: 1.5.3
@@ -28,7 +28,7 @@ dependencies:
     version: 1.5.9
   '@thisbeyond/solid-select':
     specifier: ^0.14.0
-    version: 0.14.0(solid-js@1.8.14)
+    version: 0.14.0(solid-js@1.8.15)
   '@types/dom-speech-recognition':
     specifier: ^0.0.4
     version: 0.0.4
@@ -46,19 +46,19 @@ dependencies:
     version: 5.0.4
   rosetty-solid:
     specifier: ^2.0.23
-    version: 2.0.23(date-fns@3.3.1)(rosetty@3.0.13)(solid-js@1.8.14)
+    version: 2.0.23(date-fns@3.3.1)(rosetty@3.0.13)(solid-js@1.8.15)
   socket.io-client:
     specifier: ^4.7.4
     version: 4.7.4
   solid-js:
-    specifier: 1.8.14
-    version: 1.8.14
+    specifier: 1.8.15
+    version: 1.8.15
   solid-query-devkit:
     specifier: ^1.0.36
-    version: 1.0.36(@tanstack/solid-query@5.20.1)(path@0.12.7)(solid-js@1.8.14)
+    version: 1.0.36(@tanstack/solid-query@5.20.1)(path@0.12.7)(solid-js@1.8.15)
   solid-toast:
     specifier: ^0.5.0
-    version: 0.5.0(solid-js@1.8.14)
+    version: 0.5.0(solid-js@1.8.15)
   tauri-plugin-autostart-api:
     specifier: github:tauri-apps/tauri-plugin-autostart#v1
     version: github.com/tauri-apps/tauri-plugin-autostart/a534e61e246e6d96ab938fcd3e644dcb74d5c0bf
@@ -123,7 +123,7 @@ devDependencies:
     version: 5.1.2(@types/node@20.11.17)(sass@1.70.0)
   vite-plugin-solid:
     specifier: 2.10.1
-    version: 2.10.1(solid-js@1.8.14)(vite@5.1.2)
+    version: 2.10.1(solid-js@1.8.15)(vite@5.1.2)
   vite-plugin-tauri:
     specifier: 3.3.0
     version: 3.3.0(@tauri-apps/cli@1.5.9)(vite@5.1.2)
@@ -617,24 +617,24 @@ packages:
       '@felte/common': 1.1.8
     dev: false
 
-  /@felte/reporter-solid@1.2.10(solid-js@1.8.14):
+  /@felte/reporter-solid@1.2.10(solid-js@1.8.15):
     resolution: {integrity: sha512-PA53U8faMpTfeijDH3hq6wdIGJfbHwG4OkpcNghvVsrWWvfTErAynFBLdVrqO1f4ZH1lgHK8rZfNYitChd89og==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     peerDependencies:
       solid-js: ^1.2.0
     dependencies:
       '@felte/common': 1.1.8
-      solid-js: 1.8.14
+      solid-js: 1.8.15
     dev: false
 
-  /@felte/solid@1.2.13(solid-js@1.8.14):
+  /@felte/solid@1.2.13(solid-js@1.8.15):
     resolution: {integrity: sha512-ngJgNRe0Frxl6iypCFbpKxs+xGw3MXucttqbCDAx7rSFe4BL9NqLDr65CZhd28KY4NRjbnYgAqT0mf0HxHz9Vw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     peerDependencies:
       solid-js: ^1.2.0
     dependencies:
       '@felte/core': 1.4.3
-      solid-js: 1.8.14
+      solid-js: 1.8.15
     dev: false
 
   /@felte/validator-zod@1.0.17(zod@3.22.4):
@@ -855,25 +855,25 @@ packages:
     resolution: {integrity: sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==}
     dev: false
 
-  /@solidjs/router@0.12.0(solid-js@1.8.14):
+  /@solidjs/router@0.12.0(solid-js@1.8.15):
     resolution: {integrity: sha512-9dyBL35T7x86RBSJBMu9jLGytBTmWQehb0uxez7TfzYtwI+v9poo2fzRbcCCrWVTQkwGD/rWvqmxUvczp2at3A==}
     peerDependencies:
       solid-js: ^1.8.6
     dependencies:
-      solid-js: 1.8.14
+      solid-js: 1.8.15
     dev: false
 
   /@tanstack/query-core@5.20.1:
     resolution: {integrity: sha512-OONHHYG5vzjob4An+EfzbW7TRyb+sCA0AEgHzUIMlV9NYlF7wIwbla3PUfB3ocnaK1gZyROf0Lux/CBSu0exBQ==}
     dev: false
 
-  /@tanstack/solid-query@5.20.1(solid-js@1.8.14):
+  /@tanstack/solid-query@5.20.1(solid-js@1.8.15):
     resolution: {integrity: sha512-gFeOV3oEipA4QPfiyX6b5XJFOca0G26lGXk1ByJKygJCTydnNCQd6Bm/40sd30CchYT93ae+pL1SSsWR5Cq3mw==}
     peerDependencies:
       solid-js: ^1.6.0
     dependencies:
       '@tanstack/query-core': 5.20.1
-      solid-js: 1.8.14
+      solid-js: 1.8.15
     dev: false
 
   /@tauri-apps/api@1.5.3:
@@ -977,12 +977,12 @@ packages:
       '@tauri-apps/cli-win32-ia32-msvc': 1.5.9
       '@tauri-apps/cli-win32-x64-msvc': 1.5.9
 
-  /@thisbeyond/solid-select@0.14.0(solid-js@1.8.14):
+  /@thisbeyond/solid-select@0.14.0(solid-js@1.8.15):
     resolution: {integrity: sha512-ecq4U3Vnc/nJbU84ARuPg2scNuYt994ljF5AmBlzuZW87x43mWiGJ5hEWufIJJMpDT6CcnCIx/xbrdDkaDEHQw==}
     peerDependencies:
       solid-js: ^1.5
     dependencies:
-      solid-js: 1.8.14
+      solid-js: 1.8.15
     dev: false
 
   /@trysound/sax@0.2.0:
@@ -3106,7 +3106,7 @@ packages:
       templite: 1.2.0
     dev: false
 
-  /rosetty-solid@2.0.23(date-fns@3.3.1)(rosetty@3.0.13)(solid-js@1.8.14):
+  /rosetty-solid@2.0.23(date-fns@3.3.1)(rosetty@3.0.13)(solid-js@1.8.15):
     resolution: {integrity: sha512-TVlsxFt6egPS/aGZPQE+DjcnvCmU81THI7GF2qP8huZuYZP9s3ztC78gKMwU/jrgj44iXjucaF93PrhwTDPVJw==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -3116,7 +3116,7 @@ packages:
     dependencies:
       date-fns: 3.3.1
       rosetty: 3.0.13
-      solid-js: 1.8.14
+      solid-js: 1.8.15
     dev: false
 
   /rosetty@3.0.13:
@@ -3214,26 +3214,26 @@ packages:
       - supports-color
     dev: false
 
-  /solid-js@1.8.14:
-    resolution: {integrity: sha512-kDfgHBm+ROVLDVuqaXh/jYz0ZVJ29TYfVsKsgDPtNcjoyaPtOvDX2l0tVnthjLdEXr7vDTYeqEYFfMkZakDsOQ==}
+  /solid-js@1.8.15:
+    resolution: {integrity: sha512-d0QP/efr3UVcwGgWVPveQQ0IHOH6iU7yUhc2piy8arNG8wxKmvUy1kFxyF8owpmfCWGB87usDKMaVnsNYZm+Vw==}
     dependencies:
       csstype: 3.1.3
       seroval: 1.0.4
       seroval-plugins: 1.0.4(seroval@1.0.4)
 
-  /solid-query-devkit@1.0.36(@tanstack/solid-query@5.20.1)(path@0.12.7)(solid-js@1.8.14):
+  /solid-query-devkit@1.0.36(@tanstack/solid-query@5.20.1)(path@0.12.7)(solid-js@1.8.15):
     resolution: {integrity: sha512-cKnXd2+RfApKN1d2WlayOPFWtIxZ+u8u+AJRxKs5JFWMjszG9XBJjtkHVpv73yrOnvTUedgbAjBQ+16WL2C/bg==}
     peerDependencies:
       '@tanstack/solid-query': ^4.29.1
       path: ^0.12.7
       solid-js: ^1.7.3
     dependencies:
-      '@tanstack/solid-query': 5.20.1(solid-js@1.8.14)
+      '@tanstack/solid-query': 5.20.1(solid-js@1.8.15)
       path: 0.12.7
-      solid-js: 1.8.14
+      solid-js: 1.8.15
     dev: false
 
-  /solid-refresh@0.6.3(solid-js@1.8.14):
+  /solid-refresh@0.6.3(solid-js@1.8.15):
     resolution: {integrity: sha512-F3aPsX6hVw9ttm5LYlth8Q15x6MlI/J3Dn+o3EQyRTtTxidepSTwAYdozt01/YA+7ObcciagGEyXIopGZzQtbA==}
     peerDependencies:
       solid-js: ^1.3
@@ -3241,15 +3241,15 @@ packages:
       '@babel/generator': 7.23.6
       '@babel/helper-module-imports': 7.22.15
       '@babel/types': 7.23.9
-      solid-js: 1.8.14
+      solid-js: 1.8.15
     dev: true
 
-  /solid-toast@0.5.0(solid-js@1.8.14):
+  /solid-toast@0.5.0(solid-js@1.8.15):
     resolution: {integrity: sha512-t770JakjyS2P9b8Qa1zMLOD51KYKWXbTAyJePVUoYex5c5FH5S/HtUBUbZAWFcqRCKmAE8KhyIiCvDZA8bOnxQ==}
     peerDependencies:
       solid-js: ^1.5.4
     dependencies:
-      solid-js: 1.8.14
+      solid-js: 1.8.15
     dev: false
 
   /source-map-js@1.0.2:
@@ -3505,7 +3505,7 @@ packages:
     resolution: {integrity: sha512-hGdgQozCsQJMyfK5urgFcWEqsSSrK63Awe0t/IMR0bZ0QMtnuaiHzThW81guu3qx9abLi99NEuiaN6P9gVYsNg==}
     dev: true
 
-  /vite-plugin-solid@2.10.1(solid-js@1.8.14)(vite@5.1.2):
+  /vite-plugin-solid@2.10.1(solid-js@1.8.15)(vite@5.1.2):
     resolution: {integrity: sha512-kfVdNLWaJqaJVL52U6iCCKNW/nXE7bS1VVGOWPGllOkJfcNILymVSY0LCBLSnyy0iYnRtrXpiHm14rMuzeC7CA==}
     peerDependencies:
       '@testing-library/jest-dom': ^5.16.6 || ^5.17.0 || ^6.*
@@ -3519,8 +3519,8 @@ packages:
       '@types/babel__core': 7.20.5
       babel-preset-solid: 1.8.12(@babel/core@7.23.9)
       merge-anything: 5.1.7
-      solid-js: 1.8.14
-      solid-refresh: 0.6.3(solid-js@1.8.14)
+      solid-js: 1.8.15
+      solid-refresh: 0.6.3(solid-js@1.8.15)
       vite: 5.1.2(@types/node@20.11.17)(sass@1.70.0)
       vitefu: 0.2.5(vite@5.1.2)
     transitivePeerDependencies:
