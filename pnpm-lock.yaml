@@ -43,7 +43,7 @@ dependencies:
     version: 4.17.21
   obs-websocket-js:
     specifier: ^5.0.4
-    version: 5.0.4
+    version: 5.0.5
   rosetty-solid:
     specifier: ^2.0.23
     version: 2.0.31(date-fns@3.3.1)(rosetty@3.0.17)(solid-js@1.8.15)
@@ -2513,8 +2513,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /obs-websocket-js@5.0.4:
-    resolution: {integrity: sha512-6ieuC2rq/mQoEMwO2dVKv3ZqeGL6nKHuSvnd2d/CmXuK2nOfw88NInJUyvpFHNaltmkc6P5ywVZu68Q8K5xvqQ==}
+  /obs-websocket-js@5.0.5:
+    resolution: {integrity: sha512-mSMqLXJ4z28jgwy7Ecv8CtpYh/xdbcn524kq0n6wT3kN6xkgWU/Zc6OtiVZo+gyyylC0anjehMLEVF+CDSwccw==}
     engines: {node: '>12.0'}
     dependencies:
       '@msgpack/msgpack': 2.8.0
