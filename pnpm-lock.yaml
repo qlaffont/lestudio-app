@@ -46,7 +46,7 @@ dependencies:
     version: 5.0.5
   rosetty-solid:
     specifier: ^2.0.23
-    version: 2.0.44(date-fns@3.3.1)(rosetty@3.0.23)(solid-js@1.8.15)
+    version: 2.0.45(date-fns@3.3.1)(rosetty@3.0.23)(solid-js@1.8.15)
   socket.io-client:
     specifier: ^4.7.4
     version: 4.7.4
@@ -3425,8 +3425,8 @@ packages:
       templite: 1.2.0
     dev: false
 
-  /rosetty-solid@2.0.44(date-fns@3.3.1)(rosetty@3.0.23)(solid-js@1.8.15):
-    resolution: {integrity: sha512-Ffml2fQi0JHKQ4lfhrBQJPIu0mD4RaxgYu7IpDLR24+a8jo6XMQ/i6qIEavq/1e8zUffTKOgV3OTN/gGZl2GvQ==}
+  /rosetty-solid@2.0.45(date-fns@3.3.1)(rosetty@3.0.23)(solid-js@1.8.15):
+    resolution: {integrity: sha512-BHSOkETg7eNSsW5WLZQLOSarf5xKm634sv2PollV7MtD79nuFZ5sd3/0lVlFZsNQKze4scFX4R+fTr6cjL3ftQ==}
     engines: {node: '>=10'}
     peerDependencies:
       date-fns: ^3.3
