@@ -49,7 +49,7 @@ dependencies:
     version: 2.0.59(date-fns@3.3.1)(rosetty@3.0.31)(solid-js@1.8.15)
   socket.io-client:
     specifier: ^4.7.4
-    version: 4.7.4
+    version: 4.7.5
   solid-js:
     specifier: 1.8.15
     version: 1.8.15
@@ -3196,8 +3196,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /socket.io-client@4.7.4:
-    resolution: {integrity: sha512-wh+OkeF0rAVCrABWQBaEjLfb7DVPotMbu0cgWgyR0v6eA4EoVnAwcIeIbcdTE3GT/H3kbdLl7OoH2+asoDRIIg==}
+  /socket.io-client@4.7.5:
+    resolution: {integrity: sha512-sJ/tqHOCe7Z50JCBCXrsY3I2k03iOiUe+tj1OmKeD2lXPiGH/RUCdTZFoqVyN7l1MnpIzPrGtLcijffmeouNlQ==}
     engines: {node: '>=10.0.0'}
     dependencies:
       '@socket.io/component-emitter': 3.1.0
