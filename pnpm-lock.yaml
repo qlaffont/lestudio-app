@@ -16,7 +16,7 @@ dependencies:
     version: 1.0.17(zod@3.22.4)
   '@solidjs/router':
     specifier: ^0.13.0
-    version: 0.13.0(solid-js@1.8.15)
+    version: 0.13.1(solid-js@1.8.15)
   '@tanstack/solid-query':
     specifier: ^5.20.1
     version: 5.28.5(solid-js@1.8.15)
@@ -855,8 +855,8 @@ packages:
     resolution: {integrity: sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==}
     dev: false
 
-  /@solidjs/router@0.13.0(solid-js@1.8.15):
-    resolution: {integrity: sha512-YHLbFv9J53+iG4yVrh0vVdYiyXPTk892UyZ1jiMPsUXn2dYkX4552N+8SjvlKWWsmNmYxaoefM6jZn1YtVIUUg==}
+  /@solidjs/router@0.13.1(solid-js@1.8.15):
+    resolution: {integrity: sha512-Rz5Lf0ssWMuN+Wm2GFO0vwZoO/KSwYFSuCUzWrRAvje5M0ZYZrMk5FZxuzdJT+zg8KuqWJQlRALks5E0r+FjAA==}
     peerDependencies:
       solid-js: ^1.8.6
     dependencies:
@@ -1672,8 +1672,8 @@ packages:
     resolution: {integrity: sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==}
     dev: false
 
-  /date-fns@3.5.0:
-    resolution: {integrity: sha512-a+DwyXn7NOfdJireCzAA0B9p7jIXEu/Q9JKCyMYvH6+0vPUNbQceA0neXrdfJ/xzl3mhOh5vibQQ3936Tssm6A==}
+  /date-fns@3.6.0:
+    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
     dev: false
 
   /debug@4.3.4:
@@ -3129,7 +3129,7 @@ packages:
     resolution: {integrity: sha512-Ut4dlzMiDA5U7AhlDSYdxAcgh1CXg2IbUa0XJtszMqVFc5xEimAED1ulLFJ1n9px4xQ+oE6fKCmY7faoiV+gNQ==}
     engines: {node: '>=10'}
     dependencies:
-      date-fns: 3.5.0
+      date-fns: 3.6.0
       rosetta: 1.1.0
     dev: false
 
