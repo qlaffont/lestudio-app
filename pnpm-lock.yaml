@@ -16,7 +16,7 @@ dependencies:
     version: 1.0.17(zod@3.22.4)
   '@solidjs/router':
     specifier: ^0.13.0
-    version: 0.13.1(solid-js@1.8.16)
+    version: 0.13.2(solid-js@1.8.16)
   '@tanstack/solid-query':
     specifier: ^5.20.1
     version: 5.28.13(solid-js@1.8.16)
@@ -855,8 +855,8 @@ packages:
     resolution: {integrity: sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==}
     dev: false
 
-  /@solidjs/router@0.13.1(solid-js@1.8.16):
-    resolution: {integrity: sha512-Rz5Lf0ssWMuN+Wm2GFO0vwZoO/KSwYFSuCUzWrRAvje5M0ZYZrMk5FZxuzdJT+zg8KuqWJQlRALks5E0r+FjAA==}
+  /@solidjs/router@0.13.2(solid-js@1.8.16):
+    resolution: {integrity: sha512-zPlQUXaaUMFzz70SNN8scITooBaJyvIJci3ilyHUBXr9+mzEJGCUSohRJx/VXKo9+p+HEBHY48GnChiPYfLsjg==}
     peerDependencies:
       solid-js: ^1.8.6
     dependencies:
