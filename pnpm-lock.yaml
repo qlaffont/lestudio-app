@@ -16,7 +16,7 @@ importers:
         version: 1.2.13(solid-js@1.8.17)
       '@felte/validator-zod':
         specifier: ^1.0.17
-        version: 1.0.17(zod@3.23.4)
+        version: 1.0.17(zod@3.23.5)
       '@solidjs/router':
         specifier: ^0.13.0
         version: 0.13.2(solid-js@1.8.17)
@@ -67,7 +67,7 @@ importers:
         version: https://codeload.github.com/tauri-apps/tauri-plugin-autostart/tar.gz/a8455f120ad801d828f91528f1b4ca47d00c8ba3
       zod:
         specifier: ^3.22.4
-        version: 3.23.4
+        version: 3.23.5
       zod-rosetty:
         specifier: ^1.0.103
         version: 1.0.167
@@ -2153,8 +2153,8 @@ packages:
     resolution: {integrity: sha512-zzNiLI6YY3Mx+Y8xSg5bWNoFXk4ZFMJrYLukqexrYyC6QgBBlj0cXMiP+POqBd290ehcjm+FIkWv+io5CPP3KA==}
     engines: {node: '>=10'}
 
-  zod@3.23.4:
-    resolution: {integrity: sha512-/AtWOKbBgjzEYYQRNfoGKHObgfAZag6qUJX1VbHo2PRBgS+wfWagEY2mizjfyAPcGesrJOcx/wcl0L9WnVrHFw==}
+  zod@3.23.5:
+    resolution: {integrity: sha512-fkwiq0VIQTksNNA131rDOsVJcns0pfVUjHzLrNBiF/O/Xxb5lQyEXkhZWcJ7npWsYlvs+h0jFWXXy4X46Em1JA==}
 
 snapshots:
 
@@ -2411,10 +2411,10 @@ snapshots:
       '@felte/core': 1.4.3
       solid-js: 1.8.17
 
-  '@felte/validator-zod@1.0.17(zod@3.23.4)':
+  '@felte/validator-zod@1.0.17(zod@3.23.5)':
     dependencies:
       '@felte/common': 1.1.8
-      zod: 3.23.4
+      zod: 3.23.5
 
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
@@ -4120,6 +4120,6 @@ snapshots:
 
   zod-rosetty@1.0.167:
     dependencies:
-      zod: 3.23.4
+      zod: 3.23.5
 
-  zod@3.23.4: {}
+  zod@3.23.5: {}
