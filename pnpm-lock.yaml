@@ -24,8 +24,8 @@ importers:
         specifier: ^5.20.1
         version: 5.36.1(solid-js@1.8.17)
       '@tauri-apps/api':
-        specifier: 1.5.5
-        version: 1.5.5
+        specifier: 1.5.6
+        version: 1.5.6
       '@tauri-apps/cli':
         specifier: 1.5.14
         version: 1.5.14
@@ -569,10 +569,9 @@ packages:
     resolution: {integrity: sha512-zxnDjHHKjOsrIzZm6nO5Xapb/BxqUq1tc7cGkFXsFkGTsSWgCPH1D8mm0XS9weJY2OaR73I3k3S+b7eSzJDfqA==}
     engines: {node: '>= 14.6.0', npm: '>= 6.6.0', yarn: '>= 1.19.1'}
 
-  '@tauri-apps/api@1.5.5':
-    resolution: {integrity: sha512-Jgwj8BK/9YXZNzcqVDk1Al7+u5V9sWrZ8MhV41A1AKgJaicHuqlkc/qdx06sNDXvc+qprTPpBAaqnt891qOUIQ==}
+  '@tauri-apps/api@1.5.6':
+    resolution: {integrity: sha512-LH5ToovAHnDVe5Qa9f/+jW28I6DeMhos8bNDtBOmmnaDpPmJmYLyHdeDblAWWWYc7KKRDg9/66vMuKyq0WIeFA==}
     engines: {node: '>= 14.6.0', npm: '>= 6.6.0', yarn: '>= 1.19.1'}
-    deprecated: 1.5.5 broke compatability with the tauri crate in a patch release where it should've been in a minor release. Resolved by 1.5.6
 
   '@tauri-apps/cli-darwin-arm64@1.5.14':
     resolution: {integrity: sha512-lxoSOp3KKSqzHJa7iT32dukPGMlfsTuja1xXSgwR8o/fqzpYJY7FY/3ZxesP8HR66FcK+vtqa//HNqeOQ0mHkA==}
@@ -2528,7 +2527,7 @@ snapshots:
 
   '@tauri-apps/api@1.5.3': {}
 
-  '@tauri-apps/api@1.5.5': {}
+  '@tauri-apps/api@1.5.6': {}
 
   '@tauri-apps/cli-darwin-arm64@1.5.14':
     optional: true
