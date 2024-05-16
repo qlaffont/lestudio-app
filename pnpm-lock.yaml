@@ -22,7 +22,7 @@ importers:
         version: 0.13.3(solid-js@1.8.17)
       '@tanstack/solid-query':
         specifier: ^5.20.1
-        version: 5.35.1(solid-js@1.8.17)
+        version: 5.36.1(solid-js@1.8.17)
       '@tauri-apps/api':
         specifier: 1.5.5
         version: 1.5.5
@@ -58,7 +58,7 @@ importers:
         version: 1.8.17
       solid-query-devkit:
         specifier: ^1.0.36
-        version: 1.0.36(@tanstack/solid-query@5.35.1(solid-js@1.8.17))(path@0.12.7)(solid-js@1.8.17)
+        version: 1.0.36(@tanstack/solid-query@5.36.1(solid-js@1.8.17))(path@0.12.7)(solid-js@1.8.17)
       solid-toast:
         specifier: ^0.5.0
         version: 0.5.0(solid-js@1.8.17)
@@ -557,11 +557,11 @@ packages:
     peerDependencies:
       solid-js: ^1.8.6
 
-  '@tanstack/query-core@5.35.1':
-    resolution: {integrity: sha512-0Dnpybqb8+ps6WgqBnqFEC+1F/xLvUosRAq+wiGisTgolOZzqZfkE2995dEXmhuzINiTM7/a6xSGznU0NIvBkw==}
+  '@tanstack/query-core@5.36.1':
+    resolution: {integrity: sha512-BteWYEPUcucEu3NBcDAgKuI4U25R9aPrHSP6YSf2NvaD2pSlIQTdqOfLRsxH9WdRYg7k0Uom35Uacb6nvbIMJg==}
 
-  '@tanstack/solid-query@5.35.1':
-    resolution: {integrity: sha512-nY4tTrwYwcfbxXxFfRBEPucxnasGdudvC7EHxfBY/KrsA0ItkPo7MLLVLSe7yXIo/qqO6aFLV6/nd8SzbgNvCg==}
+  '@tanstack/solid-query@5.36.1':
+    resolution: {integrity: sha512-HatBgF8zB/tceKQXdQcCKENejGeW+M288Gul0Lv389h6LQSs/0CepmfsuVGGn3iG00w9hkedCc0ghWOc0jr5Pg==}
     peerDependencies:
       solid-js: ^1.6.0
 
@@ -572,6 +572,7 @@ packages:
   '@tauri-apps/api@1.5.5':
     resolution: {integrity: sha512-Jgwj8BK/9YXZNzcqVDk1Al7+u5V9sWrZ8MhV41A1AKgJaicHuqlkc/qdx06sNDXvc+qprTPpBAaqnt891qOUIQ==}
     engines: {node: '>= 14.6.0', npm: '>= 6.6.0', yarn: '>= 1.19.1'}
+    deprecated: 1.5.5 broke compatability with the tauri crate in a patch release where it should've been in a minor release. Resolved by 1.5.6
 
   '@tauri-apps/cli-darwin-arm64@1.5.14':
     resolution: {integrity: sha512-lxoSOp3KKSqzHJa7iT32dukPGMlfsTuja1xXSgwR8o/fqzpYJY7FY/3ZxesP8HR66FcK+vtqa//HNqeOQ0mHkA==}
@@ -2518,11 +2519,11 @@ snapshots:
     dependencies:
       solid-js: 1.8.17
 
-  '@tanstack/query-core@5.35.1': {}
+  '@tanstack/query-core@5.36.1': {}
 
-  '@tanstack/solid-query@5.35.1(solid-js@1.8.17)':
+  '@tanstack/solid-query@5.36.1(solid-js@1.8.17)':
     dependencies:
-      '@tanstack/query-core': 5.35.1
+      '@tanstack/query-core': 5.36.1
       solid-js: 1.8.17
 
   '@tauri-apps/api@1.5.3': {}
@@ -3875,9 +3876,9 @@ snapshots:
       seroval: 1.0.4
       seroval-plugins: 1.0.4(seroval@1.0.4)
 
-  solid-query-devkit@1.0.36(@tanstack/solid-query@5.35.1(solid-js@1.8.17))(path@0.12.7)(solid-js@1.8.17):
+  solid-query-devkit@1.0.36(@tanstack/solid-query@5.36.1(solid-js@1.8.17))(path@0.12.7)(solid-js@1.8.17):
     dependencies:
-      '@tanstack/solid-query': 5.35.1(solid-js@1.8.17)
+      '@tanstack/solid-query': 5.36.1(solid-js@1.8.17)
       path: 0.12.7
       solid-js: 1.8.17
 
