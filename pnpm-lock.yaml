@@ -70,7 +70,7 @@ importers:
         version: 3.23.8
       zod-rosetty:
         specifier: ^1.0.103
-        version: 1.0.182
+        version: 1.0.186
     devDependencies:
       '@types/node':
         specifier: 20.12.12
@@ -1266,6 +1266,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.3:
     resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
@@ -2149,8 +2150,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  zod-rosetty@1.0.182:
-    resolution: {integrity: sha512-gJlmPHCnmgHAInrGcBI4J+OfuGW7xeya3lg3vzYG1fmCry7GGy9BFPh75CLIYCJfkCmT9X5c5ny4Q0ecR7tclQ==}
+  zod-rosetty@1.0.186:
+    resolution: {integrity: sha512-0v6IbkHDRTEbBJCDocAacesxlVQdV6RCSpPYL/an5PiTf6/+ybQ8OKYFPy8bX0S1GhFPpICRYoatrd9Brw950A==}
     engines: {node: '>=10'}
 
   zod@3.23.8:
@@ -4113,7 +4114,7 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod-rosetty@1.0.182:
+  zod-rosetty@1.0.186:
     dependencies:
       zod: 3.23.8
 
