@@ -113,7 +113,7 @@ importers:
         version: 3.2.5
       sass:
         specifier: ^1.70.0
-        version: 1.77.2
+        version: 1.77.3
       tailwindcss:
         specifier: 3.4.3
         version: 3.4.3
@@ -122,13 +122,13 @@ importers:
         version: 5.4.5
       vite:
         specifier: 5.2.12
-        version: 5.2.12(@types/node@20.12.13)(sass@1.77.2)
+        version: 5.2.12(@types/node@20.12.13)(sass@1.77.3)
       vite-plugin-solid:
         specifier: 2.10.2
-        version: 2.10.2(solid-js@1.8.17)(vite@5.2.12(@types/node@20.12.13)(sass@1.77.2))
+        version: 2.10.2(solid-js@1.8.17)(vite@5.2.12(@types/node@20.12.13)(sass@1.77.3))
       vite-plugin-tauri:
         specifier: 3.3.0
-        version: 3.3.0(@tauri-apps/cli@1.5.14)(vite@5.2.12(@types/node@20.12.13)(sass@1.77.2))
+        version: 3.3.0(@tauri-apps/cli@1.5.14)(vite@5.2.12(@types/node@20.12.13)(sass@1.77.3))
 
 packages:
 
@@ -1834,8 +1834,8 @@ packages:
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
 
-  sass@1.77.2:
-    resolution: {integrity: sha512-eb4GZt1C3avsX3heBNlrc7I09nyT00IUuo4eFhAbeXWU2fvA7oXI53SxODVAA+zgZCk9aunAZgO+losjR3fAwA==}
+  sass@1.77.3:
+    resolution: {integrity: sha512-WJHo+jmFp0dwRuymPmIovuxHaBntcCyja5hCB0yYY9wWrViEp4kF5Cdai98P72v6FzroPuABqu+ddLMbQWmwzA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -3826,7 +3826,7 @@ snapshots:
     dependencies:
       queue-microtask: 1.2.3
 
-  sass@1.77.2:
+  sass@1.77.3:
     dependencies:
       chokidar: 3.6.0
       immutable: 4.3.6
@@ -4051,7 +4051,7 @@ snapshots:
 
   validate-html-nesting@1.2.2: {}
 
-  vite-plugin-solid@2.10.2(solid-js@1.8.17)(vite@5.2.12(@types/node@20.12.13)(sass@1.77.2)):
+  vite-plugin-solid@2.10.2(solid-js@1.8.17)(vite@5.2.12(@types/node@20.12.13)(sass@1.77.3)):
     dependencies:
       '@babel/core': 7.23.9
       '@types/babel__core': 7.20.5
@@ -4059,18 +4059,18 @@ snapshots:
       merge-anything: 5.1.7
       solid-js: 1.8.17
       solid-refresh: 0.6.3(solid-js@1.8.17)
-      vite: 5.2.12(@types/node@20.12.13)(sass@1.77.2)
-      vitefu: 0.2.5(vite@5.2.12(@types/node@20.12.13)(sass@1.77.2))
+      vite: 5.2.12(@types/node@20.12.13)(sass@1.77.3)
+      vitefu: 0.2.5(vite@5.2.12(@types/node@20.12.13)(sass@1.77.3))
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-tauri@3.3.0(@tauri-apps/cli@1.5.14)(vite@5.2.12(@types/node@20.12.13)(sass@1.77.2)):
+  vite-plugin-tauri@3.3.0(@tauri-apps/cli@1.5.14)(vite@5.2.12(@types/node@20.12.13)(sass@1.77.3)):
     dependencies:
       '@tauri-apps/cli': 1.5.14
       fast-glob: 3.2.12
-      vite: 5.2.12(@types/node@20.12.13)(sass@1.77.2)
+      vite: 5.2.12(@types/node@20.12.13)(sass@1.77.3)
 
-  vite@5.2.12(@types/node@20.12.13)(sass@1.77.2):
+  vite@5.2.12(@types/node@20.12.13)(sass@1.77.3):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
@@ -4078,11 +4078,11 @@ snapshots:
     optionalDependencies:
       '@types/node': 20.12.13
       fsevents: 2.3.3
-      sass: 1.77.2
+      sass: 1.77.3
 
-  vitefu@0.2.5(vite@5.2.12(@types/node@20.12.13)(sass@1.77.2)):
+  vitefu@0.2.5(vite@5.2.12(@types/node@20.12.13)(sass@1.77.3)):
     optionalDependencies:
-      vite: 5.2.12(@types/node@20.12.13)(sass@1.77.2)
+      vite: 5.2.12(@types/node@20.12.13)(sass@1.77.3)
 
   which@2.0.2:
     dependencies:
