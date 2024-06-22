@@ -37,7 +37,7 @@ importers:
         version: 0.0.4
       classix:
         specifier: ^2.1.36
-        version: 2.1.37
+        version: 2.1.38
       date-fns:
         specifier: ^3.3.1
         version: 3.6.0
@@ -853,8 +853,8 @@ packages:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
 
-  classix@2.1.37:
-    resolution: {integrity: sha512-mTlsDSW/AHxHNggs+dNpI2kYGyK0tawAupR0B6vQYU9i8WTAoaa6bFGKIwwiHfmfCZdrsrtlCULic7p/9ZPuVQ==}
+  classix@2.1.38:
+    resolution: {integrity: sha512-vl59khsZzN4cFpEC+K05kz3ArSQUJuIOKppR/8979wkC4vWGiKR7nuvD396tiViGrcztk4W6/9VlgV+tqVrGgw==}
 
   color-convert@1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
@@ -2815,7 +2815,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  classix@2.1.37: {}
+  classix@2.1.38: {}
 
   color-convert@1.9.3:
     dependencies:
