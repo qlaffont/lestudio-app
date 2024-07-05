@@ -18,7 +18,7 @@
     "@typescript-eslint/eslint-plugin": "7.14.1",
     "@typescript-eslint/parser": "7.14.1",
     "autoprefixer": "10.4.19",
-    "cssnano": "7.0.3",
+    "cssnano": "7.0.4",
     "cssnano-preset-advanced": "7.0.3",
     "daisyui": "^4.6.3",
     "eslint": "8.57.0",
