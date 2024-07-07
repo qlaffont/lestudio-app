@@ -30,8 +30,8 @@ importers:
         specifier: 1.6.0
         version: 1.6.0
       '@thisbeyond/solid-select':
-        specifier: ^0.14.0
-        version: 0.14.0(solid-js@1.8.18)
+        specifier: ^0.15.0
+        version: 0.15.0(solid-js@1.8.18)
       '@types/dom-speech-recognition':
         specifier: ^0.0.4
         version: 0.0.4
@@ -636,10 +636,11 @@ packages:
     engines: {node: '>= 10'}
     hasBin: true
 
-  '@thisbeyond/solid-select@0.14.0':
-    resolution: {integrity: sha512-ecq4U3Vnc/nJbU84ARuPg2scNuYt994ljF5AmBlzuZW87x43mWiGJ5hEWufIJJMpDT6CcnCIx/xbrdDkaDEHQw==}
+  '@thisbeyond/solid-select@0.15.0':
+    resolution: {integrity: sha512-L3QnA5vm09JWNqLR4QqEIi7cgfs9/1sJbFjyEnPskjKpxEvb4G+Iy5cyd1qhZ2vAIZ9vaLd3udts3kefayPsMg==}
+    engines: {node: '>=18.0.0', pnpm: '>=9.0.0'}
     peerDependencies:
-      solid-js: ^1.5
+      solid-js: ^1.8
 
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -2585,7 +2586,7 @@ snapshots:
       '@tauri-apps/cli-win32-ia32-msvc': 1.6.0
       '@tauri-apps/cli-win32-x64-msvc': 1.6.0
 
-  '@thisbeyond/solid-select@0.14.0(solid-js@1.8.18)':
+  '@thisbeyond/solid-select@0.15.0(solid-js@1.8.18)':
     dependencies:
       solid-js: 1.8.18
 
