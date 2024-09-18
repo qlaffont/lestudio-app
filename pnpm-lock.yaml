@@ -86,8 +86,8 @@ devDependencies:
     specifier: 7.0.6
     version: 7.0.6(postcss@8.4.40)
   cssnano-preset-advanced:
-    specifier: 7.0.4
-    version: 7.0.4(postcss@8.4.40)
+    specifier: 7.0.6
+    version: 7.0.6(postcss@8.4.40)
   daisyui:
     specifier: ^4.6.3
     version: 4.12.10(postcss@8.4.40)
@@ -1554,8 +1554,8 @@ packages:
     hasBin: true
     dev: true
 
-  /cssnano-preset-advanced@7.0.4(postcss@8.4.40):
-    resolution: {integrity: sha512-Fsh9S5EgQScr4aFahYQ1zEBDMqgyg0q9R58qssXNlwscLnFk19a/tC/ibyVGXy4ygRe+tgHfDh5esDawLFW7ug==}
+  /cssnano-preset-advanced@7.0.6(postcss@8.4.40):
+    resolution: {integrity: sha512-wk/YPSv965EjpPNEGteiXZ32BKilJcYNnX4EGUd/AriVGgHL/y59uaWVJ/ZDx69jCNUrmwiBzioCV+SG5wk3PQ==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.31
