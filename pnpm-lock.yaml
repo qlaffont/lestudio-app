@@ -71,8 +71,8 @@ dependencies:
 
 devDependencies:
   '@types/node':
-    specifier: 20.14.14
-    version: 20.14.14
+    specifier: 20.16.5
+    version: 20.16.5
   '@typescript-eslint/eslint-plugin':
     specifier: 7.18.0
     version: 7.18.0(@typescript-eslint/parser@7.18.0)(eslint@8.57.1)(typescript@5.5.4)
@@ -120,7 +120,7 @@ devDependencies:
     version: 5.5.4
   vite:
     specifier: 5.3.5
-    version: 5.3.5(@types/node@20.14.14)(sass@1.79.1)
+    version: 5.3.5(@types/node@20.16.5)(sass@1.79.1)
   vite-plugin-solid:
     specifier: 2.10.2
     version: 2.10.2(solid-js@1.8.22)(vite@5.3.5)
@@ -1024,10 +1024,10 @@ packages:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
     dev: true
 
-  /@types/node@20.14.14:
-    resolution: {integrity: sha512-d64f00982fS9YoOgJkAMolK7MN8Iq3TDdVjchbYHdEmjth/DHowx82GnoA+tVUAN+7vxfYUgAzi+JXbKNd2SDQ==}
+  /@types/node@20.16.5:
+    resolution: {integrity: sha512-VwYCweNo3ERajwy0IUlqqcyZ8/A7Zwa9ZP3MnENWcB11AejO+tLy3pu850goUW2FC/IJMdZUfKpX/yxL1gymCA==}
     dependencies:
-      undici-types: 5.26.5
+      undici-types: 6.19.8
     dev: true
 
   /@typescript-eslint/eslint-plugin@7.18.0(@typescript-eslint/parser@7.18.0)(eslint@8.57.1)(typescript@5.5.4):
@@ -3474,8 +3474,8 @@ packages:
     hasBin: true
     dev: true
 
-  /undici-types@5.26.5:
-    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+  /undici-types@6.19.8:
+    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
     dev: true
 
   /update-browserslist-db@1.1.0(browserslist@4.23.3):
@@ -3525,7 +3525,7 @@ packages:
       merge-anything: 5.1.7
       solid-js: 1.8.22
       solid-refresh: 0.6.3(solid-js@1.8.22)
-      vite: 5.3.5(@types/node@20.14.14)(sass@1.79.1)
+      vite: 5.3.5(@types/node@20.16.5)(sass@1.79.1)
       vitefu: 0.2.5(vite@5.3.5)
     transitivePeerDependencies:
       - supports-color
@@ -3540,10 +3540,10 @@ packages:
     dependencies:
       '@tauri-apps/cli': 1.6.2
       fast-glob: 3.2.12
-      vite: 5.3.5(@types/node@20.14.14)(sass@1.79.1)
+      vite: 5.3.5(@types/node@20.16.5)(sass@1.79.1)
     dev: true
 
-  /vite@5.3.5(@types/node@20.14.14)(sass@1.79.1):
+  /vite@5.3.5(@types/node@20.16.5)(sass@1.79.1):
     resolution: {integrity: sha512-MdjglKR6AQXQb9JGiS7Rc2wC6uMjcm7Go/NHNO63EwiJXfuk9PgqiP/n5IDJCziMkfw9n4Ubp7lttNwz+8ZVKA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -3571,7 +3571,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.14.14
+      '@types/node': 20.16.5
       esbuild: 0.21.5
       postcss: 8.4.47
       rollup: 4.21.3
@@ -3588,7 +3588,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 5.3.5(@types/node@20.14.14)(sass@1.79.1)
+      vite: 5.3.5(@types/node@20.16.5)(sass@1.79.1)
     dev: true
 
   /which@2.0.2:
