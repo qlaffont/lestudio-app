@@ -41,7 +41,7 @@
     "@solidjs/router": "^0.14.0",
     "@tanstack/solid-query": "^5.20.1",
     "@tauri-apps/api": "1.6.0",
-    "@tauri-apps/cli": "1.6.0",
+    "@tauri-apps/cli": "1.6.2",
     "@thisbeyond/solid-select": "^0.15.0",
     "@types/dom-speech-recognition": "^0.0.4",
     "classix": "^2.1.36",
