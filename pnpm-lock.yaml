@@ -67,7 +67,7 @@ dependencies:
     version: 3.23.8
   zod-rosetty:
     specifier: ^1.0.103
-    version: 1.0.248
+    version: 1.0.249
 
 devDependencies:
   '@types/node':
@@ -3675,8 +3675,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zod-rosetty@1.0.248:
-    resolution: {integrity: sha512-v4xZ3hoyOwCFTdJR4A7cWexitNWNxllHdkqtKcgC0AEB8V8XBCfryi7t+YVRl9+Aq4AV50zfalA9yRRKWqxD/Q==}
+  /zod-rosetty@1.0.249:
+    resolution: {integrity: sha512-akdKKNjmm3hzqYIcFqOV+I0YDJ0jSUaEnOS3vmYYkQ3IGQHAWwgPtrt8egPNGiq5MyMXPEiDJESE1+iaFl5EiA==}
     engines: {node: '>=10'}
     dependencies:
       zod: 3.23.8
