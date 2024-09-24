@@ -34,7 +34,7 @@ dependencies:
     version: 0.0.4
   classix:
     specifier: ^2.1.36
-    version: 2.1.38
+    version: 2.1.39
   date-fns:
     specifier: ^3.3.1
     version: 3.6.0
@@ -1441,8 +1441,8 @@ packages:
       readdirp: 4.0.1
     dev: true
 
-  /classix@2.1.38:
-    resolution: {integrity: sha512-vl59khsZzN4cFpEC+K05kz3ArSQUJuIOKppR/8979wkC4vWGiKR7nuvD396tiViGrcztk4W6/9VlgV+tqVrGgw==}
+  /classix@2.1.39:
+    resolution: {integrity: sha512-wLrbtt9ajflyqwKnAm1QW1Ux09xy9NaCTA3eaLI2fjD69X1RqeZj/OkpRgI1uyw0fJWDeUn7nPmFKStyV4gf3A==}
     dev: false
 
   /color-convert@1.9.3:
