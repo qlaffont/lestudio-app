@@ -45,7 +45,7 @@
     "@thisbeyond/solid-select": "^0.15.0",
     "@types/dom-speech-recognition": "^0.0.4",
     "classix": "^2.1.36",
-    "date-fns": "^3.3.1",
+    "date-fns": "^4.0.0",
     "lodash": "^4.17.21",
     "obs-websocket-js": "^5.0.4",
     "rosetty-solid": "^2.0.23",
