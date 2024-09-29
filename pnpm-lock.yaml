@@ -113,7 +113,7 @@ importers:
         version: 3.3.3
       sass:
         specifier: ^1.70.0
-        version: 1.79.3
+        version: 1.79.4
       tailwindcss:
         specifier: 3.4.13
         version: 3.4.13
@@ -122,13 +122,13 @@ importers:
         version: 5.6.2
       vite:
         specifier: 5.4.8
-        version: 5.4.8(@types/node@20.16.10)(sass@1.79.3)
+        version: 5.4.8(@types/node@20.16.10)(sass@1.79.4)
       vite-plugin-solid:
         specifier: 2.10.2
-        version: 2.10.2(solid-js@1.9.1)(vite@5.4.8(@types/node@20.16.10)(sass@1.79.3))
+        version: 2.10.2(solid-js@1.9.1)(vite@5.4.8(@types/node@20.16.10)(sass@1.79.4))
       vite-plugin-tauri:
         specifier: 3.3.0
-        version: 3.3.0(@tauri-apps/cli@1.6.2)(vite@5.4.8(@types/node@20.16.10)(sass@1.79.3))
+        version: 3.3.0(@tauri-apps/cli@1.6.2)(vite@5.4.8(@types/node@20.16.10)(sass@1.79.4))
 
 packages:
 
@@ -863,8 +863,8 @@ packages:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
 
-  chokidar@4.0.0:
-    resolution: {integrity: sha512-mxIojEAQcuEvT/lyXq+jf/3cO/KoA6z4CeNDGGevTybECPOMFCnQy3OPahluUkbqgPNGw5Bi78UC7Po6Lhy+NA==}
+  chokidar@4.0.1:
+    resolution: {integrity: sha512-n8enUVCED/KVRQlab1hr3MVpcVMvxtZjmEa956u+4YijlmQED223XMSYj2tLuKvr4jcCTzNNMpQDUer72MMmzA==}
     engines: {node: '>= 14.16.0'}
 
   classix@2.1.41:
@@ -1810,8 +1810,8 @@ packages:
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
 
-  sass@1.79.3:
-    resolution: {integrity: sha512-m7dZxh0W9EZ3cw50Me5GOuYm/tVAJAn91SUnohLRo9cXBixGUOdvmryN+dXpwR831bhoY3Zv7rEFt85PUwTmzA==}
+  sass@1.79.4:
+    resolution: {integrity: sha512-K0QDSNPXgyqO4GZq2HO5Q70TLxTH6cIT59RdoCHMivrC8rqzaTw5ab9prjz9KUN1El4FLXrBXJhik61JR4HcGg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -2824,7 +2824,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  chokidar@4.0.0:
+  chokidar@4.0.1:
     dependencies:
       readdirp: 4.0.1
 
@@ -3781,9 +3781,9 @@ snapshots:
     dependencies:
       queue-microtask: 1.2.3
 
-  sass@1.79.3:
+  sass@1.79.4:
     dependencies:
-      chokidar: 4.0.0
+      chokidar: 4.0.1
       immutable: 4.3.7
       source-map-js: 1.2.1
 
@@ -4004,7 +4004,7 @@ snapshots:
 
   validate-html-nesting@1.2.2: {}
 
-  vite-plugin-solid@2.10.2(solid-js@1.9.1)(vite@5.4.8(@types/node@20.16.10)(sass@1.79.3)):
+  vite-plugin-solid@2.10.2(solid-js@1.9.1)(vite@5.4.8(@types/node@20.16.10)(sass@1.79.4)):
     dependencies:
       '@babel/core': 7.25.2
       '@types/babel__core': 7.20.5
@@ -4012,18 +4012,18 @@ snapshots:
       merge-anything: 5.1.7
       solid-js: 1.9.1
       solid-refresh: 0.6.3(solid-js@1.9.1)
-      vite: 5.4.8(@types/node@20.16.10)(sass@1.79.3)
-      vitefu: 0.2.5(vite@5.4.8(@types/node@20.16.10)(sass@1.79.3))
+      vite: 5.4.8(@types/node@20.16.10)(sass@1.79.4)
+      vitefu: 0.2.5(vite@5.4.8(@types/node@20.16.10)(sass@1.79.4))
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-tauri@3.3.0(@tauri-apps/cli@1.6.2)(vite@5.4.8(@types/node@20.16.10)(sass@1.79.3)):
+  vite-plugin-tauri@3.3.0(@tauri-apps/cli@1.6.2)(vite@5.4.8(@types/node@20.16.10)(sass@1.79.4)):
     dependencies:
       '@tauri-apps/cli': 1.6.2
       fast-glob: 3.2.12
-      vite: 5.4.8(@types/node@20.16.10)(sass@1.79.3)
+      vite: 5.4.8(@types/node@20.16.10)(sass@1.79.4)
 
-  vite@5.4.8(@types/node@20.16.10)(sass@1.79.3):
+  vite@5.4.8(@types/node@20.16.10)(sass@1.79.4):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.47
@@ -4031,11 +4031,11 @@ snapshots:
     optionalDependencies:
       '@types/node': 20.16.10
       fsevents: 2.3.3
-      sass: 1.79.3
+      sass: 1.79.4
 
-  vitefu@0.2.5(vite@5.4.8(@types/node@20.16.10)(sass@1.79.3)):
+  vitefu@0.2.5(vite@5.4.8(@types/node@20.16.10)(sass@1.79.4)):
     optionalDependencies:
-      vite: 5.4.8(@types/node@20.16.10)(sass@1.79.3)
+      vite: 5.4.8(@types/node@20.16.10)(sass@1.79.4)
 
   which@2.0.2:
     dependencies:
