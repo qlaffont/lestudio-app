@@ -1,121 +1,130 @@
-
-use crate::commands::{get_token, get_system};
+use crate::commands::{get_system, get_token};
+use crate::config::get_api_base;
+use crate::filepath::{get_app_dir, get_music_exe_path};
 use reqwest;
-use std::{fs, process::Command, collections::HashMap};
 use std::fs::File;
 use std::io::Write;
-use crate::filepath::{get_app_dir, get_music_exe_path};
-use crate::config::get_api_base;
 use std::os::windows::process::CommandExt;
+use std::{collections::HashMap, fs, process::Command};
 
 const MUSIC_CHANNEL: &str = "music";
 
 #[derive(Clone, serde::Serialize)]
 struct Payload {
-  message: String,
+    message: String,
 }
 
 /**
  * CONFIG
  */
 
- #[derive(Debug, serde::Deserialize)]
- struct MusicData {
-     currentSongTitle: String,
-     currentSongAuthor: String,
-     currentSongAlbum: String,
-     currentSongImage: Option<String>,
-     currentSongIsPlaying: bool
- }
-
+#[derive(Debug, serde::Deserialize)]
+struct MusicData {
+    currentSongTitle: String,
+    currentSongAuthor: String,
+    currentSongAlbum: String,
+    currentSongImage: Option<String>,
+    currentSongIsPlaying: bool,
+}
 
 pub async fn update_music_exe() {
-  if get_system().await.ne("windows") {
-    return;
-  }
+    if get_system().await.ne("windows") {
+        return;
+    }
 
-  if let Err(_metadata) = fs::metadata(get_app_dir()) {
-    fs::create_dir_all(get_app_dir()).unwrap();
-  }
+    if let Err(_metadata) = fs::metadata(get_app_dir()) {
+        fs::create_dir_all(get_app_dir()).unwrap();
+    }
 
-  let url = "https://github.com/qlaffont/LeStudioCurrentSongWINCLI/releases/latest/download/LeStudioCurrentSongCLI.exe";
+    let url = "https://github.com/qlaffont/LeStudioCurrentSongWINCLI/releases/latest/download/LeStudioCurrentSongCLI.exe";
 
-  // Send an HTTP GET request to the URL
-  let body = reqwest::get(url).await;
+    // Send an HTTP GET request to the URL
+    let body = reqwest::get(url).await;
 
-  if body.is_err() {
-    return;
-  }
+    if body.is_err() {
+        return;
+    }
 
-  let body_result = body.unwrap().bytes().await.unwrap();
+    let body_result = body.unwrap().bytes().await.unwrap();
 
-  //fs::write(get_music_exe_path(), body);
-  let mut file = File::create(get_music_exe_path()).unwrap();
-  // Write a slice of bytes to the file
-  file.write_all(body_result.as_ref()).unwrap();
+    //fs::write(get_music_exe_path(), body);
+    let mut file = File::create(get_music_exe_path()).unwrap();
+    // Write a slice of bytes to the file
+    file.write_all(body_result.as_ref()).unwrap();
 }
 
 pub async fn get_music_content() -> String {
-  if get_system().await.eq("windows") {
-    let mut command = Command::new(get_music_exe_path());
+    if get_system().await.eq("windows") {
+        let mut command = Command::new(get_music_exe_path());
 
-    const DETACHED_PROCESS: u32 = 0x08000000;
-    command.creation_flags(DETACHED_PROCESS);
+        const DETACHED_PROCESS: u32 = 0x08000000;
+        command.creation_flags(DETACHED_PROCESS);
 
-    if let Ok(output) = command.output(){
-      return String::from_utf8(output.stdout).unwrap_or("null".to_string());
+        if let Ok(output) = command.output() {
+            return String::from_utf8(output.stdout).unwrap_or("null".to_string());
+        }
+
+        return String::from("null");
     }
 
     return String::from("null");
-
-  }
-
-  return String::from("null");
 }
 
 pub async fn periodically_send_process_music(window: &tauri::Window) {
+    update_music_exe().await;
 
-  update_music_exe().await;
+    let mut song_data: String = "trying to update".to_string();
 
-  let mut song_data: String = "trying to update".to_string();
+    loop {
+        let music_content: String = get_music_content().await;
 
-  loop {
-    let music_content: String = get_music_content().await;
+        if music_content.ne(&song_data) {
+            if let Some(token) = (get_token().await).ok() {
+                song_data = music_content.clone();
 
-    if music_content.ne(&song_data) {
-      if let Some(token) = (get_token().await).ok(){
-        song_data = music_content.clone();
+                // Update DB if token is provided
+                let url: String = get_api_base() + "/users/current-song?id=" + &token;
 
-        // Update DB if token is provided
-        let url: String = get_api_base() + "/users/current-song?id=" + &token;
+                let parsed_musiq_data: Result<MusicData, _> = serde_json::from_str(&music_content);
 
-        let parsed_musiq_data: Result<MusicData, _> = serde_json::from_str(&music_content);
+                if let Ok(data) = &parsed_musiq_data {
+                    let mut map = HashMap::new();
+                    map.insert("currentSongTitle", data.currentSongTitle.clone());
+                    map.insert("currentSongAuthor", data.currentSongAuthor.clone());
+                    map.insert("currentSongAlbum", data.currentSongAlbum.clone());
 
-        if let Ok(data) = &parsed_musiq_data {
-          let mut map = HashMap::new();
-          map.insert("currentSongTitle", data.currentSongTitle.clone());
-          map.insert("currentSongAuthor", data.currentSongAuthor.clone());
-          map.insert("currentSongAlbum", data.currentSongAlbum.clone());
+                    if let Some(image) = &data.currentSongImage {
+                        map.insert("currentSongImage", image.to_owned());
+                    } else {
+                        map.insert("currentSongImage", "null".to_string());
+                    }
 
-          if let Some(image) = &data.currentSongImage {
-            map.insert("currentSongImage", image.to_owned());
-          }else {
-            map.insert("currentSongImage", "null".to_string());
-          }
+                    map.insert(
+                        "currentSongIsPlaying",
+                        if data.currentSongIsPlaying == true {
+                            "true".to_string()
+                        } else {
+                            "false".to_string()
+                        },
+                    );
 
-          map.insert("currentSongIsPlaying", if data.currentSongIsPlaying == true { "true".to_string() } else { "false".to_string() });
-
-          // Send an HTTP GET request to the URL
-          let client = reqwest::Client::new();
-          client.patch(url).json(&map).send().await;
+                    // Send an HTTP GET request to the URL
+                    let client = reqwest::Client::new();
+                    client.patch(url).json(&map).send().await;
+                }
+            }
         }
-      }
+
+        window
+            .emit(
+                MUSIC_CHANNEL,
+                Payload {
+                    message: music_content,
+                },
+            )
+            .unwrap();
+
+        // Sleep for a certain duration before the next iteration
+        std::thread::sleep(std::time::Duration::from_secs(5));
     }
-
-    window.emit(MUSIC_CHANNEL, Payload { message: music_content }).unwrap();
-
-
-    // Sleep for a certain duration before the next iteration
-    std::thread::sleep(std::time::Duration::from_secs(5));
-  }
 }

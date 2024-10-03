@@ -6,12 +6,12 @@
 use std::thread;
 use tauri::{LogicalSize, Manager, Size, UserAttentionType};
 mod commands;
+mod config;
 mod filepath;
 #[cfg_attr(target_os = "windows", path = "music.rs")]
 #[cfg_attr(not(target_os = "windows"), path = "music_other.rs")]
 mod music;
 mod process_list;
-mod config;
 use async_std::task;
 use tauri::{CustomMenuItem, SystemTray, SystemTrayEvent, SystemTrayMenu, SystemTrayMenuItem};
 use tauri_plugin_autostart::MacosLauncher;
@@ -47,6 +47,17 @@ fn main() {
     let system_tray = SystemTray::new().with_menu(tray_menu);
 
     tauri::Builder::default()
+        .plugin(tauri_plugin_dialog::init())
+        .plugin(tauri_plugin_clipboard_manager::init())
+        .plugin(tauri_plugin_global_shortcut::Builder::new().build())
+        .plugin(tauri_plugin_fs::init())
+        .plugin(tauri_plugin_updater::Builder::new().build())
+        .plugin(tauri_plugin_process::init())
+        .plugin(tauri_plugin_shell::init())
+        .plugin(tauri_plugin_http::init())
+        .plugin(tauri_plugin_os::init())
+        .plugin(tauri_plugin_notification::init())
+        .plugin(tauri_plugin_autostart::init())
         .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
             let window = app.get_window("main").unwrap();
             window.set_focus();
