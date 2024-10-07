@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/indent */
 import { listen } from '@tauri-apps/api/event';
-import { invoke } from '@tauri-apps/api/tauri';
-import { disable, enable } from 'tauri-plugin-autostart-api';
+import { invoke } from '@tauri-apps/api/core';
+import { disable, enable } from '@tauri-apps/plugin-autostart';
 
 export type Config = {
   token?: string;
