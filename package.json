@@ -15,8 +15,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "20.17.2",
-    "@typescript-eslint/eslint-plugin": "8.12.1",
-    "@typescript-eslint/parser": "8.12.1",
+    "@typescript-eslint/eslint-plugin": "8.12.2",
+    "@typescript-eslint/parser": "8.12.2",
     "autoprefixer": "10.4.20",
     "cssnano": "7.0.6",
     "cssnano-preset-advanced": "7.0.6",
