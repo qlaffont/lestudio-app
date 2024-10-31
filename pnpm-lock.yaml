@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@felte/reporter-solid':
         specifier: ^1.2.10
-        version: 1.2.10(solid-js@1.9.3)
+        version: 1.2.11(solid-js@1.9.3)
       '@felte/solid':
         specifier: ^1.2.13
         version: 1.2.13(solid-js@1.9.3)
@@ -385,12 +385,16 @@ packages:
     resolution: {integrity: sha512-VbEOfNLWfDx0SpCfeE+fNWDpvcntND4MFs7Lxd18RIjrZYH82D0wWe9th2oVF9QT5XzgBEdMF5NGIttcwU4sjg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
+  '@felte/common@1.1.9':
+    resolution: {integrity: sha512-d9e9M5FWc7AyaX/fb2I78AvwIAAA6S8ncKoTd3vYdPGQfgryl18oMU+ScM1WgFnbOBSoItdt61oaZAuRqfE4AA==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
   '@felte/core@1.4.3':
     resolution: {integrity: sha512-DoXTuHD4atDG0SfTfI4orllcnriHRgM/ijMdRsUbLPL7O/UWGSWNXkxErx7XPbWOXMjX0J79KLfxZzm9abOCxw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  '@felte/reporter-solid@1.2.10':
-    resolution: {integrity: sha512-PA53U8faMpTfeijDH3hq6wdIGJfbHwG4OkpcNghvVsrWWvfTErAynFBLdVrqO1f4ZH1lgHK8rZfNYitChd89og==}
+  '@felte/reporter-solid@1.2.11':
+    resolution: {integrity: sha512-KmzIU4oWup6Fwz4DEKWJ9EkhlN3VLe6xjiN0D8FdbzlLMaGZoY/mtq/0rlvCscN8o3RDjgyHsee8HzyF1fcJbw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     peerDependencies:
       solid-js: ^1.2.0
@@ -2450,13 +2454,15 @@ snapshots:
 
   '@felte/common@1.1.8': {}
 
+  '@felte/common@1.1.9': {}
+
   '@felte/core@1.4.3':
     dependencies:
       '@felte/common': 1.1.8
 
-  '@felte/reporter-solid@1.2.10(solid-js@1.9.3)':
+  '@felte/reporter-solid@1.2.11(solid-js@1.9.3)':
     dependencies:
-      '@felte/common': 1.1.8
+      '@felte/common': 1.1.9
       solid-js: 1.9.3
 
   '@felte/solid@1.2.13(solid-js@1.9.3)':
