@@ -19,7 +19,7 @@ importers:
         version: 1.0.18(zod@3.23.8)
       '@solidjs/router':
         specifier: ^0.15.0
-        version: 0.15.1(solid-js@1.9.3)
+        version: 0.15.2(solid-js@1.9.3)
       '@tanstack/solid-query':
         specifier: ^5.20.1
         version: 5.62.7(solid-js@1.9.3)
@@ -637,8 +637,8 @@ packages:
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
-  '@solidjs/router@0.15.1':
-    resolution: {integrity: sha512-lb5BRBqQqii/1dQCglx2K68xLkgu7QcrcajWKuuEx6FHTsK/hp5IgVhjy6RzPMLj+SFyrrRi/ldirCFNxtzh0Q==}
+  '@solidjs/router@0.15.2':
+    resolution: {integrity: sha512-UWtliRvOnjfYMONQcTGwtf6BEud5QlF0oHC5L+kcSGYn0jARH5KzC3+3LLZ0al7oQo/5Rc50ssMswPuAuxFvAA==}
     peerDependencies:
       solid-js: ^1.8.6
 
@@ -2622,7 +2622,7 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.2': {}
 
-  '@solidjs/router@0.15.1(solid-js@1.9.3)':
+  '@solidjs/router@0.15.2(solid-js@1.9.3)':
     dependencies:
       solid-js: 1.9.3
 
