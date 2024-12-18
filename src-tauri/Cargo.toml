@@ -19,7 +19,7 @@ serde = { version = "1.0.200", features = ["derive"] }
 tauri = { version = "1.6.2", features = [ "updater", "system-tray", "api-all", "devtools"] }
 directories = "5.0.1"
 reqwest = "0.12.4"
-sysinfo="0.30.11"
+sysinfo="0.33.0"
 async-std = {version = "1.12", features = ["attributes", "tokio1"] }
 tauri-plugin-autostart = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
