@@ -70,7 +70,7 @@ importers:
         version: 3.24.1
       zod-rosetty:
         specifier: ^1.0.103
-        version: 1.0.271
+        version: 1.0.272
     devDependencies:
       '@types/node':
         specifier: 22.10.2
@@ -2222,8 +2222,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  zod-rosetty@1.0.271:
-    resolution: {integrity: sha512-ISLx+XALyJFTJQfoSPMWFlBGKsxt6WqFtncnga3HJPKmfSkqqNM5Yc1a8yKd93H+3UBND2oewwx7mOizkGFylQ==}
+  zod-rosetty@1.0.272:
+    resolution: {integrity: sha512-/rotWCg9una1cuC9EuXwVp30WzxbclNZnW70PCjLDblpkp9XGvQRB+DTHMPp4kSesTU/mHbfVVpSZLIGJ/POaA==}
     engines: {node: '>=10'}
 
   zod@3.24.1:
@@ -4237,7 +4237,7 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod-rosetty@1.0.271:
+  zod-rosetty@1.0.272:
     dependencies:
       zod: 3.24.1
 
